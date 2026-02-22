@@ -11,18 +11,37 @@ This project will go over using scikit-learn in binary classification  for this 
  
 ## HOW IT'S MADE 
 Languages used: Python (version 3.14.3)    
-Environement: VSCode
+Environment: VSCode
 
 [![Version: Python 3.14.3](https://img.shields.io/badge/Python-3.14.3-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 ## METHODS AND TECHNIQUES  
-This project will be broken down into the main components:
+After importing our data we took a look into what variables we have.  
 
-1. Data Exploration 
-2. Data preparation and pre-processing 
-3. Modelling 
-4. Evaluation and testing 
+The predicted variables is the "fraud label" field.   
+We have multiple predictor fields:  
+
+transaction_id - identifier to each transaction   
+user_id - identifier for each user.   
+transaction_amount - amount for each transaction.   
+transaction_type - how funds were exchanged e.g "payment" or "bank transfer".   
+payment_mode - wallet, card, UPI etc.   
+device_type - device transaction was made from e.g iOS.   
+device_location - location of the device used to make transaction.   
+account_age_days - age of the account     
+transaction_hour - time of transaction in 24 hour notation.    
+previous_failed_attempts - if there were previous attempts to make fraudulent transactions   
+avg_transaction_amount - avg amount each account usually makes   
+is_international - is the trasnaction international    
+ip_risk_score - a numerical value  that quantifies the likelihood an IP address is involved in malicious activity, such as fraud, spam, or cyberattacks. 
+login_attempts_last_24h - number of login attempts to the account in the last 24 hours   
+fraud_label- is the transaction fraud or not 
+
+**DATA EXPLORATION**
+
+After exploring the raw data with `.head()`, `.shape()`, `.nunique()`, and `.keys()` we moved into visualisations that allow us to carry out 
+Exploratory Data Analysis and Data Mining 
 
 ## FUNCTION EXPLANATION  
 
