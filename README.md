@@ -17,7 +17,12 @@ Environement: VSCode
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 ## METHODS AND TECHNIQUES  
+This project will be broken down into the main components:
 
+1. Data Exploration 
+2. Data preparation and pre-processing 
+3. Modelling 
+4. Evaluation and testing 
 
 ## FUNCTION EXPLANATION  
 
