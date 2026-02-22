@@ -41,9 +41,12 @@ fraud_label- is the transaction fraud or not
 **DATA EXPLORATION**
 
 After exploring the raw data with `.head()`, `.shape()`, `.nunique()`, and `.keys()` we moved into visualisations that allow us to carry out 
-Exploratory Data Analysis and Data Mining 
+Exploratory Data Analysis and Data Mining.
 
-## FUNCTION EXPLANATION  
+**DATA PREPARAION AND PRE-PROCESSING**   
+Since our ID variables are identifiers, we dropped the ID columns.  
+
+`get_dummies()` - is a pandas function that helps transform categorical variables into numerical values that can be used in binary classification.  
 
 
 
