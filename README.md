@@ -38,18 +38,27 @@ We have multiple predictor fields:
 `login_attempts_last_24h` - number of login attempts to the account in the last 24 hours   
 `fraud_label` - is the transaction fraud or not 
 
-**DATA EXPLORATION**
 
-After exploring the raw data with `.head()`, `.shape()`, `.nunique()`, and `.keys()` we moved into visualisations that allow us to carry out 
+**DATA EXPLORATION**
+We did preliminary exploratory with the raw data using `.head()`, `.shape()`, `.nunique()`, and `.keys()`.  
+In this we managed to find that our dataset is highly skewed in favour of the non-fraud transactions: 
+
+<img width="126" height="76" alt="Image" src="https://github.com/user-attachments/assets/ad18a307-faef-48a7-b924-6f7f53e3cdd0" />
+
+We moved into visualisations that allow us to carry out 
 Exploratory Data Analysis and Data Mining.
+
+[INSERT THE PICTURES AND ANALYSIS HERE]
 
 **DATA PREPARAION AND PRE-PROCESSING**   
 Since our ID variables are identifiers, we dropped the ID columns.  
 
+**Feature engineering**
 `get_dummies()` - is a pandas function that helps transform categorical variables into numerical values that can be used in binary classification.  
 We apply the get dummies function to the categorical fields of `transaction_type`, `payment_mode`, `device_type`, `device_location`.
 
-
+**MODELLING**
+For our first binary classification task we will use Logistic Regression to act as a baseline 
 
 
  ## PROJECT STRUCTURE      
