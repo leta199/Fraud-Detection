@@ -61,6 +61,9 @@ We apply the get dummies function to the categorical fields of `transaction_type
 For our first binary classification task we will use Logistic Regression to act as a baseline 
 
 
+SMOTE 
+
+https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/
  ## PROJECT STRUCTURE      
 
   
