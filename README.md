@@ -34,7 +34,7 @@ We have multiple predictor fields:
 `previous_failed_attempts` - if there were previous attempts to make fraudulent transactions   
 `avg_transaction_amount` - avg amount each account usually makes   
 `is_international` - is the trasnaction international    
-`ip_risk_score` - a numerical value  that quantifies the likelihood an IP address is involved in malicious activity, such as fraud, spam, or cyberattacks. 
+`ip_risk_score` - a numerical value  that quantifies the likelihood an IP address is involved in malicious activity, such as fraud, spam, or cyberattacks.   
 `login_attempts_last_24h` - number of login attempts to the account in the last 24 hours   
 `fraud_label` - is the transaction fraud or not 
 
