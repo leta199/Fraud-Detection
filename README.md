@@ -96,7 +96,7 @@ This model deos not seem to work well in such unbalanced data.
 Creates many forest classifiers and our model picks the best tree out of all of them. 
 SMOTE 
 
-https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/
+[Geekforgeeks](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
  ## PROJECT STRUCTURE      
 
   
