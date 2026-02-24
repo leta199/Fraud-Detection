@@ -64,8 +64,7 @@ Our new dummy variables and other numeric predictors are called `x` and the "fra
 `train_test_split` - is used for data partitioning, which split data into 70/30 train/ test split.  
 `stratify`- was used in order to make sure each split has an equal amount of minor splits (class 0 - not fraud).  
 
-For our first binary classification task we will use `LogisticRegression` to act as a baseline.   
-We then fit our model to the train data. 
+
 
 **EVAULATION AND TESTING**   
 Once we test our data on the test set using `predict` we will use the following metrics to evaluate how well the model works:  
@@ -73,6 +72,13 @@ Once we test our data on the test set using `predict` we will use the following 
 `balanced accuracy` - how many predicted classes were correct taking into account the proportion of our binary classes.  
 `precision_score` - how many of identified fraud cases were actually fraud.  
 `recall_score` - out of fraud cases  how many did our model catch.
+
+Recall will prove to be the most useful metrics as we need to catch all fraud cases to prevents as much damage to customers as possible however, we must balance recall with 
+precision as flagging too many non -fraud transactions as fraud will disrupt user experience and convenience.
+
+`LogisticRegression` 
+Acts as a baseline uses log odds to predict outcome by putting trasnactions in classes based on being above certain threshold usually 50%. 
+We then fit our model to the train data. 
 
 Once we test our model using these scores:   
 accuracy score - is very high at 93.5%.   
@@ -83,8 +89,11 @@ recall score - is also 0 since the model did not predict any fraud cases.
 These are not promising results but this mostly happens due to the the highly unbalanced dataset.   
 Therefore, our model learns that it can reduce error by always predicting non fraud.  
 
-Now we will try to find a way to make our model better.  
-**class_weights** - is another way to change the weight and significance of each class.  
+<img width="515" height="455" alt="Image" src="https://github.com/user-attachments/assets/68fbf79f-9938-47fc-83eb-19247ba81916" />
+
+*Methods of Improvement*
+
+**Class_weights** - is another way to change the weight and significance of each class.  
 We use the "balanced" argument to ensure that each class is weihed equally.  
 
 However this only still has a low balanced accuracy of 52.5%.   
@@ -97,6 +106,8 @@ Creates and combines mulitple trees to get the most stable result with the highe
 - We trained our model on the train data
 - We used this model on our test data and it did not fair much better with balanced accuracy of 50%, precision and recall of 0%. 
 
+<img width="515" height="455" alt="Image" src="https://github.com/user-attachments/assets/839c9038-8a0b-4d4c-9bc4-7f5e99dcc76b" />
+
 **Probability thresholds**   
 Finally we tried to use different thresholds for our probability acceptance.  
 We created a dataframe that that contains all of our metrics and with model names.   
@@ -108,10 +119,20 @@ Recall was very low for Random forest at 21.8% with similarly low precsion at 7.
 
 <img width="466" height="110" alt="Image" src="https://github.com/user-attachments/assets/27ed879d-4c95-4aeb-878d-32855124c1bd" />
 
-SMOTE 
+Therefore our precision is much too low to justify both models and recall is very low for Random Forest so we need differencet approach. 
+
+**SMOTE**
+Courtesy of Geekforgeeks there sis a method we can use for highly unbalanced datasets called SMOTE.  
+This is a resampling technique that generates synthetic data for our minority non fraud class.   
+It interpolates between existing data to create  completely new data points.  
+It helps prevent overfitting and allows models to learn patterns that predict minority class.   
+
+Caution - it is important to only use reasmpling on the train data to prevent data leakage. 
 
 [Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
- ## PROJECT STRUCTURE      
+ 
+ 
+## PROJECT STRUCTURE      
 
   
 ## AUTHORS   
