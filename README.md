@@ -93,10 +93,15 @@ Therefore, we can catch way more fraud cases but still not all of them.
 This model deos not seem to work well in such unbalanced data. 
 
 `RandomForestClassifier`   
-Creates many forest classifiers and our model picks the best tree out of all of them. 
+Creates and combines mulitple trees to get the most stable result with the highest accuracy. 
+- We trained our model on the train data
+- We used this model on our test data and it did not fair much better with balanced accuracy of 50%, precision and recall of 0%. 
+
+
+
 SMOTE 
 
-[Geekforgeeks](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
+[Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
  ## PROJECT STRUCTURE      
 
   
