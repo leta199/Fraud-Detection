@@ -65,7 +65,12 @@ Our new dummy variables and other numeric predictors are called `x` and the "fra
 `stratify`- was used in order to make sure each split has an equal amount of minor splits (class 0 - not fraud).  
 
 For our first binary classification task we will use `LogisticRegression` to act as a baseline.   
+We then fit our model to the train data. 
 
+**EVAULATION AND TESTING** 
+Once we test our data on the test set using `predict` we will use the following metrics to evaluate how well the model works:  
+accuracy score - how many of our predicted classes were correct out of the total prediction.
+balanced accuracy - how many predicted classes were correct taking into account the proportion of our binary classes.
 
 
 SMOTE 
