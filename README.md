@@ -69,13 +69,15 @@ We then fit our model to the train data.
 
 **EVAULATION AND TESTING** 
 Once we test our data on the test set using `predict` we will use the following metrics to evaluate how well the model works:  
-accuracy score - how many of our predicted classes were correct out of the total predictions.
-balanced accuracy - how many predicted classes were correct taking into account the proportion of our binary classes.  
-precision_score - how many of identified fraud cases were actually fraud.  
-recall_score - out of fraud cases  how many did our model catch.
+`accuracy score` - how many of our predicted classes were correct out of the total predictions.
+`balanced accuracy` - how many predicted classes were correct taking into account the proportion of our binary classes.  
+`precision_score` - how many of identified fraud cases were actually fraud.  
+`recall_score` - out of fraud cases  how many did our model catch.
 
 Once we test our model using these scores: 
-
+accuracy score - is very high at 93.5%. 
+balanced accuracy score - is only at 50% therefore at most we only predicted a few fraud cases accurately that averages out the accuracy to 50%. 
+precision score - 
 
 
 SMOTE 
