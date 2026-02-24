@@ -39,7 +39,7 @@ We have multiple predictor fields:
 `fraud_label` - is the transaction fraud or not 
 
 
-**DATA EXPLORATION**
+**DATA EXPLORATION** 
 We did preliminary exploratory with the raw data using `.head()`, `.shape()`, `.nunique()`, and `.keys()`.  
 In this we managed to find that our dataset is highly skewed in favour of the non-fraud transactions: 
 
@@ -50,14 +50,14 @@ Exploratory Data Analysis and Data Mining.
 
 [INSERT THE PICTURES AND ANALYSIS HERE]
 
-**DATA PREPARAION AND PRE-PROCESSING**   
+**DATA PREPARAION AND PRE-PROCESSING**     
 Since our ID variables are identifiers, we dropped the ID columns.  
 
 **Feature engineering**
 `get_dummies()` - is a pandas function that helps transform categorical variables into numerical values that can be used in binary classification.  
 We apply the get dummies function to the categorical fields of `transaction_type`, `payment_mode`, `device_type`, `device_location`.
 
-**MODELLING**. 
+**MODELLING**.   
 We begin by partitioning our data into our predictor and predicted variables.  
 Our new dummy variables and other numeric predictors are called `x` and the "fraud_label"  is y.  
 
@@ -67,7 +67,7 @@ Our new dummy variables and other numeric predictors are called `x` and the "fra
 For our first binary classification task we will use `LogisticRegression` to act as a baseline.   
 We then fit our model to the train data. 
 
-**EVAULATION AND TESTING** 
+**EVAULATION AND TESTING**   
 Once we test our data on the test set using `predict` we will use the following metrics to evaluate how well the model works:  
 `accuracy score` - how many of our predicted classes were correct out of the total predictions.
 `balanced accuracy` - how many predicted classes were correct taking into account the proportion of our binary classes.  
@@ -87,7 +87,9 @@ Now we will try to find a way to make our model better.
 **class_weights** - is another way to change the weight and significance of each class.  
 We use the "balanced" argument to ensure that each class is weihed equally.  
 
-However this only still has a low accuracy of 52.5% and 
+However this only still has a low balanced accuracy of 52.5%.   
+Our precision is much higher at 7.14% and recall is 55.8%.  
+Therefore, we can catch way more fraud cases but still not all of them. 
 
 
 SMOTE 
