@@ -97,6 +97,8 @@ Creates and combines mulitple trees to get the most stable result with the highe
 - We trained our model on the train data
 - We used this model on our test data and it did not fair much better with balanced accuracy of 50%, precision and recall of 0%. 
 
+**Probability thresholds 
+
 
 
 SMOTE 
