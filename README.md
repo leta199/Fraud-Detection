@@ -97,14 +97,16 @@ Creates and combines mulitple trees to get the most stable result with the highe
 - We trained our model on the train data
 - We used this model on our test data and it did not fair much better with balanced accuracy of 50%, precision and recall of 0%. 
 
-**Probability thresholds** 
+**Probability thresholds**   
 Finally we tried to use different thresholds for our probability acceptance.  
 We created a dataframe that that contains all of our metrics and with model names.   
- `predict_proba`  - was utilised to set acceptance probaility to our threshold of 10%. This means if there is a 10% chance of fraud the model predicts fraud.   
+ `predict_proba`  - was utilised to set acceptance probability to our threshold of 10%. This means if there is a 10% chance of fraud the model predicts fraud.   
  
- Our balanced accuracy and for both models still ends up being not much better than radom chance 
+Our balanced accuracy and for both models still ends up being not much better than random chance.  
+Our recall is very high for Logistic regression (100%) however, precision was very low (6.53%) therefore our model over-predicts transaction as fraud.  
+Recall was very low for Random forest at 21.8% with similarly low precsion at 7.57%. This models over-predicts transactions as fraud but also does not catch all fraud cases.
 
-
+<img width="466" height="110" alt="Image" src="https://github.com/user-attachments/assets/27ed879d-4c95-4aeb-878d-32855124c1bd" />
 
 SMOTE 
 
