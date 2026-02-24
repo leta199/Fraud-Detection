@@ -77,7 +77,8 @@ Once we test our data on the test set using `predict` we will use the following 
 Once we test our model using these scores: 
 accuracy score - is very high at 93.5%. 
 balanced accuracy score - is only at 50% therefore at most we only predicted a few fraud cases accurately that averages out the accuracy to 50%. 
-precision score - 
+precision score - is 0% meaning that our mode predicted no fraud cases. 
+recall score - is also 0 since the model did not predict any fraud cases. 
 
 
 SMOTE 
