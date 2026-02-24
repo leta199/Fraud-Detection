@@ -91,6 +91,14 @@ Therefore, our model learns that it can reduce error by always predicting non fr
 
 <img width="515" height="455" alt="Image" src="https://github.com/user-attachments/assets/68fbf79f-9938-47fc-83eb-19247ba81916" />
 
+
+`RandomForestClassifier`   
+Creates and combines mulitple trees to get the most stable result with the highest accuracy. 
+- We trained our model on the train data
+- We used this model on our test data and it did not fair much better with balanced accuracy of 50%, precision and recall of 0%. 
+
+<img width="515" height="455" alt="Image" src="https://github.com/user-attachments/assets/839c9038-8a0b-4d4c-9bc4-7f5e99dcc76b" />
+
 *Methods of Improvement*
 
 **Class_weights** - is another way to change the weight and significance of each class.  
@@ -100,13 +108,6 @@ However this only still has a low balanced accuracy of 52.5%.
 Our precision is much higher at 7.14% and recall is 55.8%.  
 Therefore, we can catch way more fraud cases but still not all of them.   
 This model deos not seem to work well in such unbalanced data. 
-
-`RandomForestClassifier`   
-Creates and combines mulitple trees to get the most stable result with the highest accuracy. 
-- We trained our model on the train data
-- We used this model on our test data and it did not fair much better with balanced accuracy of 50%, precision and recall of 0%. 
-
-<img width="515" height="455" alt="Image" src="https://github.com/user-attachments/assets/839c9038-8a0b-4d4c-9bc4-7f5e99dcc76b" />
 
 **Probability thresholds**   
 Finally we tried to use different thresholds for our probability acceptance.  
