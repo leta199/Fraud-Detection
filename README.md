@@ -83,7 +83,11 @@ recall score - is also 0 since the model did not predict any fraud cases.
 These are not promising results but this mostly happens due to the the highly unbalanced dataset.   
 Therefore, our model learns that it can reduce error by always predicting non fraud.  
 
-**class_weights**
+Now we will try to find a way to make our model better.  
+**class_weights** - is another way to change the weight and significance of each class.  
+We use the "balanced" argument to ensure that each class is weihed equally.  
+
+However this only still has a low accuracy of 52.5% and 
 
 
 SMOTE 
