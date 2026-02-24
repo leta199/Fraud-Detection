@@ -122,7 +122,7 @@ Recall was very low for Random forest at 21.8% with similarly low precsion at 7.
 
 Therefore our precision is much too low to justify both models and recall is very low for Random Forest so we need differencet approach. 
 
-**SMOTE** 
+**SMOTE**   
 Courtesy of Geekforgeeks there sis a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
