@@ -69,7 +69,7 @@ We then fit our model to the train data.
 
 **EVAULATION AND TESTING**   
 Once we test our data on the test set using `predict` we will use the following metrics to evaluate how well the model works:  
-`accuracy score` - how many of our predicted classes were correct out of the total predictions.
+`accuracy score` - how many of our predicted classes were correct out of the total predictions.  
 `balanced accuracy` - how many predicted classes were correct taking into account the proportion of our binary classes.  
 `precision_score` - how many of identified fraud cases were actually fraud.  
 `recall_score` - out of fraud cases  how many did our model catch.
@@ -89,9 +89,11 @@ We use the "balanced" argument to ensure that each class is weihed equally.
 
 However this only still has a low balanced accuracy of 52.5%.   
 Our precision is much higher at 7.14% and recall is 55.8%.  
-Therefore, we can catch way more fraud cases but still not all of them. 
+Therefore, we can catch way more fraud cases but still not all of them.   
+This model deos not seem to work well in such unbalanced data. 
 
-
+`RandomForestClassifier`   
+Creates many forest classifiers and our model picks the best tree out of all of them. 
 SMOTE 
 
 https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/
