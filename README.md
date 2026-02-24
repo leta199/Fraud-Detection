@@ -57,8 +57,15 @@ Since our ID variables are identifiers, we dropped the ID columns.
 `get_dummies()` - is a pandas function that helps transform categorical variables into numerical values that can be used in binary classification.  
 We apply the get dummies function to the categorical fields of `transaction_type`, `payment_mode`, `device_type`, `device_location`.
 
-**MODELLING**
-For our first binary classification task we will use Logistic Regression to act as a baseline 
+**MODELLING**. 
+We begin by partitioning our data into our predictor and predicted variables.  
+Our new dummy variables and other numeric predictors are called `x` and the "fraud_label"  is y.  
+
+`train_test_split` - is used for data partitioning, which split data into 70/30 train/ test split.  
+`stratify`- was used in order to make sure each split has an equal amount of minor splits (class 0 - not fraud).  
+
+For our first binary classification task we will use `LogisticRegression` to act as a baseline.   
+
 
 
 SMOTE 
