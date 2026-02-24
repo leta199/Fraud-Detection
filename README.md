@@ -76,7 +76,7 @@ Once we test our data on the test set using `predict` we will use the following 
 Recall will prove to be the most useful metrics as we need to catch all fraud cases to prevents as much damage to customers as possible however, we must balance recall with 
 precision as flagging too many non -fraud transactions as fraud will disrupt user experience and convenience.
 
-`LogisticRegression` 
+`LogisticRegression`   
 Acts as a baseline uses log odds to predict outcome by putting trasnactions in classes based on being above certain threshold usually 50%. 
 We then fit our model to the train data. 
 
@@ -121,7 +121,7 @@ Recall was very low for Random forest at 21.8% with similarly low precsion at 7.
 
 Therefore our precision is much too low to justify both models and recall is very low for Random Forest so we need differencet approach. 
 
-**SMOTE**
+**SMOTE** 
 Courtesy of Geekforgeeks there sis a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
