@@ -14,12 +14,12 @@ View(fraud)
 # Now we can start with our visualisations 
 #How many transactions are of each payment type 
 
-ggplot(data = fraud, aes(x=payment_mode), stat = "count")+
+ggplot(data = fraud, aes(x=payment_mode), stat = "count")+ #plotting our count of payment methods
   geom_bar() +
-  labs(title = "Frequency of payment method",
+  labs(title = "Frequency of payment method",              #labels for all of our axes 
        x = "Payment method",
        y = "Frequency") +
-  theme_classic()
-#We have a relatively even split of payment methods
+  theme_classic()                                          #nice theme with no excess lines 
+#We have a relatively even split of payment methods 
 
 
