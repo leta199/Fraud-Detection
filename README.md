@@ -128,10 +128,11 @@ This is a resampling technique that generates synthetic data for our minority no
 It interpolates between existing data to create  completely new data points.  
 It helps prevent overfitting and allows models to learn patterns that predict minority class.   
 
-Caution - it is important to only use reasmpling on the train data to prevent data leakage. 
+Caution - it is important to only use re-smpling on the train data to prevent data leakage. 
 
 [Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
- 
+
+
  
 ## PROJECT STRUCTURE      
 

@@ -1,6 +1,6 @@
 #Let's start by setting out working directory 
 setwd('/Users/leta/Desktop/Data Science Career /Python/Python Projects/Fraud Detection ')
-
+#[don't forget to change this]
 #Now let us import our data 
 fraud <- read.csv('/Users/leta/Desktop/Data Science Career /Python/Python Projects/Fraud Detection /dataset/Digital_Payment_Fraud_Detection_Dataset.csv')
 
