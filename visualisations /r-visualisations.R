@@ -57,17 +57,25 @@ ggplot( data = cor.intermediate,
   geom_tile() +
   theme_classic()
 
-# What proportion of international transactions are fraudulent 
+# 4- What proportion of international transactions are fraudulent 
 
-fraud %>% 
-group_by( is_international) %>% 
+fraud.international <- fraud %>% 
+group_by( is_international, fraud_label) %>% 
   summarise(
     count = n()) 
 
+fraud_0 <-subset(fraud.international, is_international == 0)
+fraud_1 <- subset(fraud.international, is_international == 1)
+
+prop1 <- prop.table(fraud_0$count)
+prop2 <- prop.table(fraud_1$count)
 
 
-            
-ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
-  geom_bar()
+p <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
+  geom_bar() 
 
-?group_by
+
+  p + annotate("text", x= 1 , y = 8000)
+
+?annotate
+
