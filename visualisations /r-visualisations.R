@@ -6,7 +6,8 @@ fraud <- read.csv('/Users/leta/Desktop/Data Science Career /Python/Python Projec
 
 #Our fraud label is catgeorical so we must transform it 
 
-fraud$fraud_label <- factor(fraud$fraud_label)
+fraud$fraud_label <- factor(fraud$fraud_lab)
+fraud$is_international <- factor(fraud$is_international)
 summary(fraud) #our fraud label has been transformed into factor of two levels 0 no fraud, 1 fraud 
 #Time to install necessary packages 
 install.packages("tidyverse")
