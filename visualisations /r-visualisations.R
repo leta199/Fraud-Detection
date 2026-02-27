@@ -70,24 +70,29 @@ fraud_1 <- subset(fraud.international, is_international == 1)
 prop0 <- prop.table(fraud_0$count)
 prop1 <- prop.table(fraud_1$count)
 
-display0 <-  paste0(round(prop0[2],3)*100,"%")
-diplsay1 <- paste0(round(prop1[2],3)*100,"%")
+display0 <-  paste0(round(prop0[2],3)*100,"% of transactions are fraud")
+display1 <- paste0(round(prop1[2],3)*100,"% of transactions are fraud")
 
 ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
   geom_bar()  +
-  labs( title = "Proportion of international trasnactions with fraud",
+  labs( title = "Proportion of international transactions with fraud",
         x = "Is transaction international?",
         y = "Frequency of transactions") +
   annotate("text",
            x = 1,
            y = 7000,
-           label =) +
+           label = display0,
+           family = "serif", 
+           fontface = "bold") +
   annotate("text",
-           x = 2,
+           x = 2.01,
            y = 1500,
-           label = "propr0[1]" )
+           label  = display1,
+           family = "serif", 
+           fontface = "bold") +
+  theme_classic()
   
 
 
-?annotate
+
 
