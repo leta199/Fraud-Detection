@@ -57,11 +57,16 @@ ggplot( data = cor.intermediate,
   geom_tile() +
   theme_classic()
 
-# What proportion of international trasnactions are fraudlent 
+# What proportion of international transactions are fraudlent 
 
 fraud %>% 
-group_by( is_international) %>% 
-  summarise(count = n()
+group_by( is_international, fraud_label) %>% 
+  summarise(
+    count = n(),
+    total = count[1])
+
+
+
             
 ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
   geom_bar()
