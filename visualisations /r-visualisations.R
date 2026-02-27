@@ -30,7 +30,7 @@ ggplot(data = fraud, aes(x=payment_mode), stat = "count")+ #plotting our count o
 # 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
 fraud
-ggplot( data = fraud, aes(x = transaction_amount, y = avg_transaction_amount, colour = factor(fraud_label))) +
+ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) +
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
