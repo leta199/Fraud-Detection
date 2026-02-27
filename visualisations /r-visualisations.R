@@ -51,7 +51,7 @@ cor.intermediate <- melt(cor.matrix, na.rm = TRUE)
 head(cor.intermediate)
 
 
-
+#Plotting the correlation heatmap 
 ggplot( data = cor.intermediate, 
         aes(x = X1, y = X2, fill = value))+
   geom_tile() +
@@ -59,6 +59,11 @@ ggplot( data = cor.intermediate,
 
 # What proportion of international trasnactions are fraudlent 
 
+fraud %>% 
+group_by( is_international) %>% 
+  summarise(count = n()
+            
 ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
   geom_bar()
 
+?group_by
