@@ -71,11 +71,14 @@ prop1 <- prop.table(fraud_0$count)
 prop2 <- prop.table(fraud_1$count)
 
 
-p <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
-  geom_bar() 
+ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
+  geom_bar()  +
+  labs( title = "Proportion of international trasnactions with fraud",
+        x = "Is transaction international?",
+        y = "Frequency of transactions") 
+  geom_text(aes(label = round( prop1[2], 3)*100),
+            vjust = -0.7)
 
-
-  p + annotate("text", x= 1 , y = 8000)
 
 ?annotate
 
