@@ -43,10 +43,15 @@ library(reshape)
 
 fraud.numeric <- fraud[, sapply(fraud, is.numeric)]
 
-cor.matrix <- cor(fraud.numeric)
+cor.matrix <- round(cor(fraud.numeric),5)
+cor.matrix[upper.tri(cor.matrix)] <-NA
 
-cor.intermediate <- melt(cor.matrix)
+cor.intermediate <- melt(cor.matrix, na.rm = T)
 head(cor.intermediate)
 
-ggplot( data = cor.intermediate, aes(x = X1, y = X2, fill = value))+
+
+
+ggplot( data = cor.intermediate, 
+        aes(x = X1, y = X2, fill = value))+
   geom_tile()
+
