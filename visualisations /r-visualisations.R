@@ -4,6 +4,10 @@ setwd('/Users/leta/Desktop/Data Science Career /Python/Python Projects/Fraud Det
 #Now let us import our data 
 fraud <- read.csv('/Users/leta/Desktop/Data Science Career /Python/Python Projects/Fraud Detection /dataset/Digital_Payment_Fraud_Detection_Dataset.csv')
 
+#Our fraud label is catgeorical so we must transform it 
+
+fraud$fraud_label <- factor(fraud$fraud_label)
+summary(fraud) #our fraud label has been transformed into factor of two levels 0 no fraud, 1 fraud 
 #Time to install necessary packages 
 install.packages("tidyverse")
 library("tidyverse")
@@ -25,7 +29,8 @@ ggplot(data = fraud, aes(x=payment_mode), stat = "count")+ #plotting our count o
 
 # 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
-ggplot( data = fraud, aes(x = transaction_amount, y = avg_transaction_amount, colour = fraud_label)) +
+fraud
+ggplot( data = fraud, aes(x = transaction_amount, y = avg_transaction_amount, colour = factor(fraud_label))) +
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
