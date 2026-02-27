@@ -67,17 +67,26 @@ group_by( is_international, fraud_label) %>%
 fraud_0 <-subset(fraud.international, is_international == 0)
 fraud_1 <- subset(fraud.international, is_international == 1)
 
-prop1 <- prop.table(fraud_0$count)
-prop2 <- prop.table(fraud_1$count)
+prop0 <- prop.table(fraud_0$count)
+prop1 <- prop.table(fraud_1$count)
 
+display0 <-  paste0(round(prop0[2],3)*100,"%")
+diplsay1 <- paste0(round(prop1[2],3)*100,"%")
 
 ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
   geom_bar()  +
   labs( title = "Proportion of international trasnactions with fraud",
         x = "Is transaction international?",
-        y = "Frequency of transactions") 
-  geom_text(aes(label = round( prop1[2], 3)*100),
-            vjust = -0.7)
+        y = "Frequency of transactions") +
+  annotate("text",
+           x = 1,
+           y = 7000,
+           label =) +
+  annotate("text",
+           x = 2,
+           y = 1500,
+           label = "propr0[1]" )
+  
 
 
 ?annotate
