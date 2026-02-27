@@ -46,12 +46,18 @@ fraud.numeric <- fraud[, sapply(fraud, is.numeric)]
 cor.matrix <- round(cor(fraud.numeric),5)
 cor.matrix[upper.tri(cor.matrix)] <-NA
 
-cor.intermediate <- melt(cor.matrix, na.rm = T)
+cor.intermediate <- melt(cor.matrix, na.rm = TRUE)
 head(cor.intermediate)
 
 
 
 ggplot( data = cor.intermediate, 
         aes(x = X1, y = X2, fill = value))+
-  geom_tile()
+  geom_tile() +
+  theme_classic()
+
+# What proportion of international trasnactions are fraudlent 
+
+ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
+  geom_bar()
 
