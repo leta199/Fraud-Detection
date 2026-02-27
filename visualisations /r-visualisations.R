@@ -12,7 +12,8 @@ library("tidyverse")
 View(fraud)
 
 # Now we can start with our visualisations 
-#How many transactions are of each payment type 
+
+# 1 - How many transactions are of each payment type 
 
 ggplot(data = fraud, aes(x=payment_mode), stat = "count")+ #plotting our count of payment methods
   geom_bar() +
@@ -22,4 +23,14 @@ ggplot(data = fraud, aes(x=payment_mode), stat = "count")+ #plotting our count o
   theme_classic()                                          #nice theme with no excess lines 
 #We have a relatively even split of payment methods 
 
+# 2 - How does transaction amount vary with average transaction in terms of predicting fraud
+
+ggplot( data = fraud, aes(x = transaction_amount, y = avg_transaction_amount, colour = fraud_label)) +
+  geom_point() +
+  labs( title = "Transaction amount vs average transaction amount",
+        x = "Transaction amount",
+        y = "Average transaction amount")
+
+# 3 - Correlation between Fraud label and other predictors 
+cor(fraud$fraud_label, fraud$transaction_amount)
 
