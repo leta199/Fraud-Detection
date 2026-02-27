@@ -34,8 +34,19 @@ ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour =
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
-        y = "Average transaction amount")
+        y = "Account age in days")
 
 # 3 - Correlation between Fraud label and other predictors 
-cor(fraud$fraud_label, fraud$transaction_amount)
 
+install.packages("reshape")
+library(reshape)
+
+fraud.numeric <- fraud[, sapply(fraud, is.numeric)]
+
+cor.matrix <- cor(fraud.numeric)
+
+cor.intermediate <- melt(cor.matrix)
+head(cor.intermediate)
+
+ggplot( data = cor.intermediate, aes(x = X1, y = X2, fill = value))+
+  geom_tile()
