@@ -20,17 +20,17 @@ View(fraud)
 
 # 1 - How many transactions are of each payment type 
 
-ggplot(data = fraud, aes(x=payment_mode), stat = "count")+ #plotting our count of payment methods
-  geom_bar() +
+ggplot(data = fraud, aes(x=payment_mode, ), stat = "count")+ #plotting our count of payment methods
+  geom_bar(fill = "salmon3") +
   labs(title = "Frequency of payment method",              #labels for all of our axes 
        x = "Payment method",
        y = "Frequency") +
-  theme_classic()                                          #nice theme with no excess lines 
+  theme_bw()                                          #nice theme with no excess lines 
 #We have a relatively even split of payment methods 
 
 # 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
-fraud
+
 ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) +
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
@@ -85,7 +85,7 @@ ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
            family = "serif", 
            fontface = "bold") +
   annotate("text",
-           x = 2.01,
+           x = 2.03,
            y = 1500,
            label  = display1,
            family = "serif", 
