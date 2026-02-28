@@ -1,7 +1,7 @@
 #--------------------------------#
-#INSTALL NECESSARY PACKAGES -----
+#INSTALL NECESSARY PACKAGES ------
 #--------------------------------#
-#We had packages that handle data importing and visualisations
+#we have packages that handle data importing and visualisations
 
 install.packages("here")    #used for relative file paths
 library("here")          
@@ -14,24 +14,24 @@ library("tidyverse")
 iiinstall.packages("patchwork") #putting together visualisations in EDA
 library("patchwork")
 
-#-------------------------------------#
+#------------------------------------#
 #IMPORT AND CLEANING THE DATASET -----
 #------------------------------------#
 
 fraud <- read.csv(here("dataset", "Digital_Payment_Fraud_Detection_Dataset.csv"))
 
-fraud$fraud_label <- factor(fraud$fraud_lab)
-fraud$is_international <- factor(fraud$is_international)
-summary(fraud) #our fraud label has been transformed into factor of two levels 0 no fraud, 1 fraud 
-#Time to install necessary packages 
+fraud$fraud_label <- factor(fraud$fraud_lab)              #fraud_label from numeric to factor (categorical)
+fraud$is_international <- factor(fraud$is_international)  #is_international from numeric to factor (categorical)
+summary(fraud) #our fraud label has been transformed into factor of two levels: 0 no fraud, 1 fraud 
 
-
-#Looking at our data in Rstudio 
-View(fraud)
+View(fraud) #looking at our data in Rstudio 
 
 # Now we can start with our visualisations 
 
-# 1 - How many transactions are of each payment type 
+#------------------------------------#
+#IEXPLORATORY DATA ANALYSIS ----------
+#------------------------------------#
+
 p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
                           y = after_stat(density), 
                           fill = fraud_label, 
