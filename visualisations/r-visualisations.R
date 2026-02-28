@@ -32,19 +32,17 @@ table(fraud$fraud_label) #large prevalence of fraud: 6.52% fraud vs 93.48% not f
 #------------------------------------#
 #EXPLORATORY DATA ANALYSIS -----------
 #------------------------------------#
-# Also I will keep the same colour scheme so let us use it:
+# Let us create repeatable code for the theme and legend
 s1 <- scale_fill_manual(name = "Fraud Label", 
                         values = c("0" = "green4", "1" = "red2"),
                         labels = c("Non fraud (0)", "Fraud (1)"))
 s2 <- scale_fill_manual(name = "Fraud Label", 
                         values = c("0" = "green4", "1" = "red2"),
                         labels = c("Non fraud (0)", "Fraud (1)"), guide = "none")
-t <- theme_minimal()
+t <- theme_bw()
 
 
 # Q1 - What is the breakdown of IP Risk Score by fraud label using densities ----
-
-
 p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
                           fill = fraud_label,
                           alpha = fraud_label)) +
@@ -60,7 +58,6 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
 # Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
 # Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- 
 # this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
-
 
 
 # Q2 - How is fraud distributed in  other variables (mainly discrete )
