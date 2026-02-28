@@ -32,8 +32,19 @@ table(fraud$fraud_label) #large prevalence of fraud: 6.52% fraud vs 93.48% not f
 #------------------------------------#
 #EXPLORATORY DATA ANALYSIS -----------
 #------------------------------------#
+# Also I will keep the same colour scheme so let us use it:
+s1 <- scale_fill_manual(name = "Fraud Label", 
+                        values = c("0" = "green4", "1" = "red2"),
+                        labels = c("Non fraud (0)", "Fraud (1)"))
+s2 <- scale_fill_manual(name = "Fraud Label", 
+                        values = c("0" = "green4", "1" = "red2"),
+                        labels = c("Non fraud (0)", "Fraud (1)"), guide = "none")
+t <- theme_minimal()
+
 
 # Q1 - What is the breakdown of IP Risk Score by fraud label using densities ----
+
+
 p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
                           fill = fraud_label,
                           alpha = fraud_label)) +
@@ -44,48 +55,41 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
     labs( title = "Density of IP Risk score by Fraud prevalence",
           x = "Ip risk score",
           y = " Density") +
-    theme_minimal() +
-    scale_fill_manual(name = "Fraud Label", 
-                      values = c("0" = "green4", "1" = "red2"),
-                      labels = c("Non fraud (0)", "Fraud (1)"))
+    t + s1
   
 # Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
 # Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- 
 # this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
-#Also I will keep the same colour scheme so let us use it:
-s <- scale_fill_manual(name = "Fraud Label", 
-                  values = c("0" = "green4", "1" = "red2"),
-                  labels = c("Non fraud (0)", "Fraud (1)"), guide = "none")
+
+
+
 # Q2 - How is fraud distributed in  other variables (mainly discrete )
 p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
   geom_bar() + s +ggtitle("Fraud by Number of login attempts") +
-  labs( x= "Number of login attempts") +
-  scale_x_discrete( limits = c(0: 8))
+  labs( x= "Number of login attempts") + t
+  scale_x_discrete( limits = c(0: 8)) 
 p3 <- ggplot(data = fraud , aes(x = payment_mode, fill = fraud_label))+
   geom_bar() + s + ggtitle("Fraud by Payment modes") +
-  labs( x= "Payment mode")
+  labs( x= "Payment mode") + t
 p4 <- ggplot(data = fraud , aes(x = device_type, fill = fraud_label))+
   geom_bar() + s + ggtitle("Fraud by Payment modes") +
-  labs( x= "Device type")
+  labs( x= "Device type") + t
 p5 <- ggplot(data = fraud , aes(x = transaction_type, fill = fraud_label))+
   geom_bar() + s + ggtitle("Fraud by Transaction types") +
-  labs( x= "Transaction type")
+  labs( x= "Transaction type") + t
 p6 <- ggplot(data = fraud , aes(x = transaction_hour, fill = fraud_label))+
   geom_bar() + s + ggtitle("Fraud by Transaction hour") + 
   scale_x_discrete( limits = c(0: 23)) +
-  labs( x= "Time of transaction")
+  labs( x= "Time of transaction") + t
 p7 <- ggplot(data = fraud , aes(x = previous_failed_attempts, fill = fraud_label))+
   geom_bar() +s  + ggtitle("Fraud by Numer of failed attempts") +
-  labs( x= "Number of previous failed attempts")
+  labs( x= "Number of previous failed attempts") + t
 
-annotations.patchwork <- data.frame(
-  anotations = c("3) Fraud does not seem to vary too much with other vraibles ")) 
-
-
-# creating a patchwork of categroical and discrete numeric variables broken down by fraud
-p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seem to increase slightly after 5 attempted logins")) +
+# creating a patchwork of categorical and discrete numeric variables broken down by fraud
+p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seem to increase slightly after 5 attempted logins\n
+                                      3) Fraud does not seem to vary too much with other variables ")) +
   plot_annotation(title = "How are our categorical and discrete variables broken down by Fraud?",
-                  subtitle = " 1) We see that the hours of 5:00 a.m.,08:00 a.m., 13:00 p.m. and 18:00 p.m.
+                  subtitle = " 1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
       have a higher prevalence of fraud than other times.")
 
 ### 2 - How does transaction amount vary with average transaction in terms of predicting fraud
