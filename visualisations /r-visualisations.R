@@ -23,10 +23,16 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
                           y = after_stat(density), 
                           fill = fraud_label, 
                           alpha = fraud_label)) +
-  geom_density() +
-  scale_alpha_manual(values = c("0" = 1, "1" = 0.5)) +
-  geom_vline(xintercept = 0.51) +
-  geom_vline(xintercept = 0.86)
+    geom_density() +
+    scale_alpha_manual(values = c("0" = 1, "1" = 0.5)) +
+    geom_vline(xintercept = 0.51) +
+    geom_vline(xintercept = 0.86) +
+    scale_fill_manual(values = c( "0"= "green4", "1" = "red2")) +
+    labs( title = "Density of IP Risk score by Fraud prevalence",
+          x = "Ip risk score" ,
+          y = " Density") +
+    theme_minimal()
+  
 
 
 
