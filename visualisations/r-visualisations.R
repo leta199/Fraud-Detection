@@ -4,9 +4,9 @@
 install.packages("here")
 library("here")
 here()
+list.files(here("dataset"))
 
-
-fraud <- read.csv(here("data", "Digital_Payment_Fraud_Detection_Dataset.csv"))
+fraud <- read.csv(here("dataset", "Digital_Payment_Fraud_Detection_Dataset.csv"))
 
 #Now let us import our data 
 
