@@ -11,7 +11,7 @@ list.files(here("dataset")) #expect to see Digital_Payment_Fraud_Detection_Datas
 install.packages("tidyverse") #visualisation suite 
 library("tidyverse")
 
-iiinstall.packages("patchwork") #putting together visualisations in EDA
+install.packages("patchwork") #putting together visualisations in EDA
 library("patchwork")
 
 #------------------------------------#
@@ -24,35 +24,37 @@ fraud$fraud_label <- factor(fraud$fraud_lab)              #fraud_label from nume
 fraud$is_international <- factor(fraud$is_international)  #is_international from numeric to factor (categorical)
 summary(fraud) #our fraud label has been transformed into factor of two levels: 0 no fraud, 1 fraud 
 
-View(fraud) #looking at our data in Rstudio 
+View(fraud) #looking at our data in RStudio 
 
 # Now we can start with our visualisations 
 
 #------------------------------------#
-#IEXPLORATORY DATA ANALYSIS ----------
+#EXPLORATORY DATA ANALYSIS -----------
 #------------------------------------#
 
+# Q1 - What is the breakdown of IP Risk Score by fraud label using densities ----
 p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
-                          y = after_stat(density), 
-                          fill = fraud_label, 
+                          fill = fraud_label,
                           alpha = fraud_label)) +
     geom_density() +
-    scale_alpha_manual(values = c("0" = 1, "1" = 0.5)) +
-    geom_vline(xintercept = 0.51) +
-    geom_vline(xintercept = 0.86) +
-    scale_fill_manual(values = c( "0"= "green4", "1" = "red2")) +
+    scale_alpha_manual(values = c("0" = 1, "1" = 0.5), guide = "none") +
+    geom_vline(xintercept = 0.51, color = "gray2") +
+    geom_vline(xintercept = 0.86, colour = "gray2") +
     labs( title = "Density of IP Risk score by Fraud prevalence",
-          x = "Ip risk score" ,
+          x = "Ip risk score",
           y = " Density") +
-    theme_minimal()
+    theme_minimal() +
+    scale_fill_manual(name = "Fraud Label", 
+                      values = c("0" = "green4", "1" = "red2"),
+                      labels = c("Non fraud (0)", "Fraud (1)"))
   
+# Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
+# This tells us that this range of IP scores has a lesser probability of Non Fraud cases than  Fraud cases.  
 
-
-
-
-
+#
 ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
   geom_histogram()
+
 # 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
 
