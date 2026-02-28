@@ -49,7 +49,8 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
                       labels = c("Non fraud (0)", "Fraud (1)"))
   
 # Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
-# This tells us that this range of IP scores has a lesser probability of Non Fraud cases than  Fraud cases.  
+# Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- 
+# this tells us that this range of IP scores has a lesser probability of Non Fraud cases than Fraud cases.  
 
 #
 ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
