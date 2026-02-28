@@ -60,8 +60,8 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
 # this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
 
 
-# Q2 - How is fraud distributed in  other variables (mainly discrete )
-p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
+# Q2 - How is fraud distributed in  other variables (mainly discrete ) ----
+p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+ 
   geom_bar() + s +ggtitle("Fraud by Number of login attempts") +
   labs( x= "Number of login attempts") + t
   scale_x_discrete( limits = c(0: 8)) 
@@ -89,26 +89,28 @@ p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seem to increase slightly
                   subtitle = " 1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
       have a higher prevalence of fraud than other times.")
 
-### 2 - How does transaction amount vary with average transaction in terms of predicting fraud
+### Q3 - How does transaction amount vary with average transaction in terms of predicting fraud ----
 
- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, fill = fraud_label)) +
+p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) + 
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
-        y = "Account age in days") + s1
+        y = "Account age in days") + scale_colour_manual(name = "Fraud Label", 
+                                                       values = c("0" = "green4", "1" = "red2"),
+                                                       labels = c("Non fraud (0)", "Fraud (1)")) + t
 
 
 # 4- What proportion of international transactions are fraudulent 
 
-fraud.international <- fraud %>% 
+fraud.international <- fraud %>%              #begin by group our transaction by international or not 
 group_by( is_international, fraud_label) %>% 
   summarise(
     count = n()) 
 
-fraud_0 <-subset(fraud.international, is_international == 0)
-fraud_1 <- subset(fraud.international, is_international == 1)
+fraud_0 <-subset(fraud.international, is_international == 0)  #getting the subset of local (0)  transactions
+fraud_1 <- subset(fraud.international, is_international == 1) # getting the subset of international (1) transactions  
 
-prop0 <- prop.table(fraud_0$count)
+prop0 <- prop.table(fraud_0$count) #getting proportion 
 prop1 <- prop.table(fraud_1$count)
 
 display0 <-  paste0(round(prop0[2],3)*100,"% of transactions are fraud")
