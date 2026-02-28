@@ -1,8 +1,14 @@
-#Let's start by setting out working directory 
-setwd('/Users/leta/Desktop/Data Science Career /Python/Python Projects/Fraud Detection ')
-#[don't forget to change this]
+#--------------------------------#
+#-INSTALL NECESSARY PACKAGES ----#
+#--------------------------------#
+install.packages("here")
+library("here")
+here()
+
+
+fraud <- read.csv(here("data", "Digital_Payment_Fraud_Detection_Dataset.csv"))
+
 #Now let us import our data 
-fraud <- read.csv('/Users/leta/Desktop/Data Science Career /Python/Python Projects/Fraud Detection /dataset/Digital_Payment_Fraud_Detection_Dataset.csv')
 
 #Our fraud label is catgeorical so we must transform it 
 
@@ -45,7 +51,7 @@ ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
 # 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
 
-ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) +
+ ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) +
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
