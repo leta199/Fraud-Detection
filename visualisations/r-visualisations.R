@@ -1,23 +1,30 @@
 #--------------------------------#
-#-INSTALL NECESSARY PACKAGES ----#
+#INSTALL NECESSARY PACKAGES -----
 #--------------------------------#
-install.packages("here")
-library("here")
-here()
-list.files(here("dataset"))
+#We had packages that handle data importing and visualisations
+
+install.packages("here")    #used for relative file paths
+library("here")          
+here()                      #file path must be root of folder 
+list.files(here("dataset")) #expect to see Digital_Payment_Fraud_Detection_Dataset.csv
+
+install.packages("tidyverse") #visualisation suite 
+library("tidyverse")
+
+iiinstall.packages("patchwork") #putting together visualisations in EDA
+library("patchwork")
+
+#-------------------------------------#
+#IMPORT AND CLEANING THE DATASET -----
+#------------------------------------#
 
 fraud <- read.csv(here("dataset", "Digital_Payment_Fraud_Detection_Dataset.csv"))
-
-#Now let us import our data 
-
-#Our fraud label is catgeorical so we must transform it 
 
 fraud$fraud_label <- factor(fraud$fraud_lab)
 fraud$is_international <- factor(fraud$is_international)
 summary(fraud) #our fraud label has been transformed into factor of two levels 0 no fraud, 1 fraud 
 #Time to install necessary packages 
-install.packages("tidyverse")
-library("tidyverse")
+
 
 #Looking at our data in Rstudio 
 View(fraud)
@@ -42,8 +49,6 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
 
 
 
-iiinstall.packages("patchwork")
-library("patchwork")
 
 
 ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
