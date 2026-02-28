@@ -91,11 +91,11 @@ p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seem to increase slightly
 
 ### 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) +
+ ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, fill = fraud_label)) +
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
-        y = "Account age in days")
+        y = "Account age in days") + s1
 
 
 # 4- What proportion of international transactions are fraudulent 
