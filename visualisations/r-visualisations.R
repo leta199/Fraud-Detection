@@ -59,7 +59,8 @@ s <- scale_fill_manual(name = "Fraud Label",
 # Q2 - How is fraud distributed in  other variables (mainly discrete )
 p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
   geom_bar() + s +ggtitle("Fraud by Number of login attempts") +
-  labs( x= "Number of login attempts")
+  labs( x= "Number of login attempts") +
+  scale_x_discrete( limits = c(0: 8))
 p3 <- ggplot(data = fraud , aes(x = payment_mode, fill = fraud_label))+
   geom_bar() + s + ggtitle("Fraud by Payment modes") +
   labs( x= "Payment mode")
@@ -77,11 +78,15 @@ p7 <- ggplot(data = fraud , aes(x = previous_failed_attempts, fill = fraud_label
   geom_bar() +s  + ggtitle("Fraud by Numer of failed attempts") +
   labs( x= "Number of previous failed attempts")
 
-# creating a patchwork of categroical and discrete numeric vraibles broken down by fraud
-p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("Fraud does not seem to change based on the lower plots"))  +
+annotations.patchwork <- data.frame(
+  anotations = c("3) Fraud does not seem to vary too much with other vraibles ")) 
+
+
+# creating a patchwork of categroical and discrete numeric variables broken down by fraud
+p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seem to increase slightly after 5 attempted logins")) +
   plot_annotation(title = "How are our categorical and discrete variables broken down by Fraud?",
                   subtitle = " 1) We see that the hours of 5:00 a.m.,08:00 a.m., 13:00 p.m. and 18:00 p.m.
-      have a higher prevalence of fraud than other times")
+      have a higher prevalence of fraud than other times.")
 
 ### 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
