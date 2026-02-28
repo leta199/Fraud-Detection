@@ -92,6 +92,55 @@ ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
            fontface = "bold") +
   theme_classic()
   
+# 5 - How does location impact fraud 
+
+fraud.location <- fraud %>% 
+  group_by( device_location, fraud_label) %>% 
+  summarise(
+    count = n()) 
+
+location_b <-subset(fraud.location, device_location == "Bangalore")
+location_c <-subset(fraud.location, device_location == "Chennai")
+location_d <-subset(fraud.location, device_location == "Delhi")
+location_h <-subset(fraud.location, device_location == "Hyderabad")
+location_m <-subset(fraud.location, device_location == "Mumbai")
+
+prop.b <- prop.table(location_b$count)
+prop.c <- prop.table(location_c$count)
+prop.d <- prop.table(location_d$count)
+prop.h <- prop.table(location_h$count)
+prop.m <- prop.table(location_m$count)
+
+
+displayb <-  paste0(round(prop.b[2],3)*100,"%  fraud")
+displayc <- paste0(round(prop.c[2],3)*100,"%  fraud")
+displayd <-  paste0(round(prop.d[2],3)*100,"%  fraud")
+displayh <- paste0(round(prop.h[2],3)*100,"%  fraud")
+displaym <-  paste0(round(prop.m[2],3)*100,"%  fraud")
+
+ann <- data.frame(
+  x =c(1,2,3,4,5),
+  y = c(1600, 1500, 1590, 1690, 1500), 
+  label = c( displayb, displayc, displayd, displayh, displaym), 
+  fontface = rep("bold", times = 5),
+  fontfamily = rep("serif", times = 5)
+  
+)
+ggplot(data = fraud , aes(x = device_location , fill = fraud_label)) +
+  geom_bar(width = 0.8) +
+  theme_classic() +
+geom_text( data = ann,
+          aes( x= x,
+           y = y, 
+           label = label,
+           fontface = fontface,
+           family = fontfamily),
+           inherit.aes = FALSE) +
+  labs(
+    title = "Distribution of Fraud per location",
+    x = "Device locations",
+    y = "Number of transactions"
+  )
 
 
 
