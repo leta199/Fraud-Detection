@@ -25,6 +25,7 @@ fraud$is_international <- factor(fraud$is_international)  #is_international from
 summary(fraud) #our fraud label has been transformed into factor of two levels: 0 no fraud, 1 fraud 
 
 View(fraud) #looking at our data in RStudio 
+table(fraud$fraud_label) #large prevalence of fraud: 6.52% fraud vs 93.48% not fraud
 
 # Now we can start with our visualisations 
 
@@ -50,14 +51,28 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
   
 # Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
 # Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- 
-# this tells us that this range of IP scores has a lesser probability of Non Fraud cases than Fraud cases.  
+# this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
+#Also I will keep the same colour scheme so let us use it:
+s <- scale_fill_manual(name = "Fraud Label", 
+                  values = c("0" = "green4", "1" = "red2"),
+                  labels = c("Non fraud (0)", "Fraud (1)"), guide = "none")
+# Q2 - How is fraud distributed in  other variables (mainly discrete )
+p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
+  geom_bar() + s +ggtitle("Fraud in No of login attempts")
+p3 <- ggplot(data = fraud , aes(x = payment_mode, fill = fraud_label))+
+  geom_bar() + s + ggtitle("Fraud by Payment modes")
+p4 <- ggplot(data = fraud , aes(x = device_type, fill = fraud_label))+
+  geom_bar() + s + ggtitle("Fraud by Payment modes")
+p5 <- ggplot(data = fraud , aes(x = transaction_type, fill = fraud_label))+
+  geom_bar() + s + ggtitle("Fraud by Transaction types")
+p6 <- ggplot(data = fraud , aes(x = transaction_hour, fill = fraud_label))+
+  geom_bar() + s + ggtitle("Fraud by Transaction hour")
+p7 <- ggplot(data = fraud , aes(x = previous_failed_attempts, fill = fraud_label))+
+  geom_bar() +s  + ggtitle("Fraud by Numer of failed attempts")
 
-#
-ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
-  geom_histogram()
+p6/ (p2 + p3 + p4 + p5 + p7)
 
-# 2 - How does transaction amount vary with average transaction in terms of predicting fraud
-
+### 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
  ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) +
   geom_point() +
