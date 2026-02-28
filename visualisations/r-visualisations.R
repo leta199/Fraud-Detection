@@ -134,8 +134,7 @@ p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
            y = 1500,
            label  = display1,
            family = "serif", 
-           fontface = "bold") +
-  theme_classic()
+           fontface = "bold") + t + s1
   
 # Q5 - How does location impact fraud ----------------------------------------------------------------
 
@@ -174,7 +173,6 @@ ann <- data.frame(                                     #let us create a datafram
 
 p10 <- ggplot(data = fraud , aes(x = device_location , fill = fraud_label)) +
   geom_bar(width = 0.8) +
-  theme_classic() +
 geom_text( data = ann,
           aes( x= x,
            y = y, 
@@ -186,7 +184,7 @@ geom_text( data = ann,
     title = "Distribution of Fraud per location",
     x = "Device locations",
     y = "Number of transactions"
-  )
+  ) + t + s1
 
 
 
