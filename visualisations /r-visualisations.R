@@ -19,15 +19,23 @@ View(fraud)
 # Now we can start with our visualisations 
 
 # 1 - How many transactions are of each payment type 
+p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
+                          y = after_stat(density), 
+                          fill = fraud_label, 
+                          alpha = fraud_label)) +
+  geom_density() +
+  scale_alpha_manual(values = c("0" = 1, "1" = 0.5)) +
+  geom_vline(xintercept = 0.51) +
+  geom_vline(xintercept = 0.86)
 
-ggplot(data = fraud, aes(x=payment_mode, ), stat = "count")+ #plotting our count of payment methods
-  geom_bar(fill = "salmon3") +
-  labs(title = "Frequency of payment method",              #labels for all of our axes 
-       x = "Payment method",
-       y = "Frequency") +
-  theme_bw()                                          #nice theme with no excess lines 
-#We have a relatively even split of payment methods 
 
+
+iiinstall.packages("patchwork")
+library("patchwork")
+
+
+ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+
+  geom_histogram()
 # 2 - How does transaction amount vary with average transaction in terms of predicting fraud
 
 
@@ -37,25 +45,6 @@ ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour =
         x = "Transaction amount",
         y = "Account age in days")
 
-# 3 - Correlation between Fraud label and other predictors 
-
-install.packages("reshape")
-library(reshape)
-
-fraud.numeric <- fraud[, sapply(fraud, is.numeric)]
-
-cor.matrix <- round(cor(fraud.numeric),5)
-cor.matrix[upper.tri(cor.matrix)] <-NA
-
-cor.intermediate <- melt(cor.matrix, na.rm = TRUE)
-head(cor.intermediate)
-
-
-#Plotting the correlation heatmap 
-ggplot( data = cor.intermediate, 
-        aes(x = X1, y = X2, fill = value))+
-  geom_tile() +
-  theme_classic()
 
 # 4- What proportion of international transactions are fraudulent 
 
@@ -124,7 +113,6 @@ ann <- data.frame(
   label = c( displayb, displayc, displayd, displayh, displaym), 
   fontface = rep("bold", times = 5),
   fontfamily = rep("serif", times = 5)
-  
 )
 ggplot(data = fraud , aes(x = device_location , fill = fraud_label)) +
   geom_bar(width = 0.8) +
@@ -142,6 +130,7 @@ geom_text( data = ann,
     y = "Number of transactions"
   )
 
-
+# 6 - g
+geom_
 
 
