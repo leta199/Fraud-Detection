@@ -42,7 +42,7 @@ s2 <- scale_fill_manual(name = "Fraud Label",
 t <- theme_bw()
 
 
-# Q1 - What is the breakdown of IP Risk Score by fraud label using densities ----
+# Q1 - What is the breakdown of IP Risk Score by fraud label using densities --------------------------------------------
 p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
                           fill = fraud_label,
                           alpha = fraud_label)) +
@@ -60,7 +60,7 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
 # this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
 
 
-# Q2 - How is fraud distributed in  other variables (mainly discrete ) ----
+# Q2 - How is fraud distributed in  other variables (mainly discrete ) --------------------------------------------
 p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+ 
   geom_bar() + s +ggtitle("Fraud by Number of login attempts") +
   labs( x= "Number of login attempts") + t
@@ -83,13 +83,12 @@ p7 <- ggplot(data = fraud , aes(x = previous_failed_attempts, fill = fraud_label
   labs( x= "Number of previous failed attempts") + t
 
 # creating a patchwork of categorical and discrete numeric variables broken down by fraud
-p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seem to increase slightly after 5 attempted logins\n
-                                      3) Fraud does not seem to vary too much with other variables ")) +
+p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seems to increase slightly after 5 attempted logins\n3) Fraud does not seem to vary too much with other variables ")) +
   plot_annotation(title = "How are our categorical and discrete variables broken down by Fraud?",
                   subtitle = " 1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
       have a higher prevalence of fraud than other times.")
 
-### Q3 - How does transaction amount vary with average transaction in terms of predicting fraud ----
+### Q3 - How does transaction amount vary with average transaction in terms of predicting fraud ------------------------
 
 p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) + 
   geom_point() +
@@ -99,8 +98,10 @@ p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, co
                                                        values = c("0" = "green4", "1" = "red2"),
                                                        labels = c("Non fraud (0)", "Fraud (1)")) + t
 
+# There is little relationship between transaction amounts and avergae age of accounts in days.
+# The fraudulent data points are visible in the entire range across the y and x axis. 
 
-# 4- What proportion of international transactions are fraudulent 
+# Q4- What proportion of international transactions are fraudulent --------------------------------------------
 
 fraud.international <- fraud %>%              #begin by group our transaction by international or not 
 group_by( is_international, fraud_label) %>% 
@@ -108,15 +109,16 @@ group_by( is_international, fraud_label) %>%
     count = n()) 
 
 fraud_0 <-subset(fraud.international, is_international == 0)  #getting the subset of local (0)  transactions
-fraud_1 <- subset(fraud.international, is_international == 1) # getting the subset of international (1) transactions  
+fraud_1 <- subset(fraud.international, is_international == 1) # getting the subset of international (1) transactions   
 
 prop0 <- prop.table(fraud_0$count) #getting proportion 
 prop1 <- prop.table(fraud_1$count)
 
-display0 <-  paste0(round(prop0[2],3)*100,"% of transactions are fraud")
+display0 <-  paste0(round(prop0[2],3)*100,"% of transactions are fraud") #getting percentage of international transactions rounded  to 3 s.f
 display1 <- paste0(round(prop1[2],3)*100,"% of transactions are fraud")
 
-ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
+
+p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
   geom_bar()  +
   labs( title = "Proportion of international transactions with fraud",
         x = "Is transaction international?",
@@ -135,40 +137,42 @@ ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
            fontface = "bold") +
   theme_classic()
   
-# 5 - How does location impact fraud 
+# Q5 - How does location impact fraud ----------------------------------------------------------------
 
-fraud.location <- fraud %>% 
+fraud.location <- fraud %>%                   #begin by grouping our transactions by device location into a dataframe 
   group_by( device_location, fraud_label) %>% 
   summarise(
     count = n()) 
 
-location_b <-subset(fraud.location, device_location == "Bangalore")
+location_b <-subset(fraud.location, device_location == "Bangalore") #get the subset of the dataframe for each location
 location_c <-subset(fraud.location, device_location == "Chennai")
 location_d <-subset(fraud.location, device_location == "Delhi")
 location_h <-subset(fraud.location, device_location == "Hyderabad")
 location_m <-subset(fraud.location, device_location == "Mumbai")
 
-prop.b <- prop.table(location_b$count)
+prop.b <- prop.table(location_b$count) #get the subset as proportions 
 prop.c <- prop.table(location_c$count)
 prop.d <- prop.table(location_d$count)
 prop.h <- prop.table(location_h$count)
 prop.m <- prop.table(location_m$count)
 
 
-displayb <-  paste0(round(prop.b[2],3)*100,"%  fraud")
+displayb <-  paste0(round(prop.b[2],3)*100,"%  fraud") #get the percentage of fraudulent transactions by location 
 displayc <- paste0(round(prop.c[2],3)*100,"%  fraud")
 displayd <-  paste0(round(prop.d[2],3)*100,"%  fraud")
 displayh <- paste0(round(prop.h[2],3)*100,"%  fraud")
 displaym <-  paste0(round(prop.m[2],3)*100,"%  fraud")
 
-ann <- data.frame(
+ann <- data.frame(                                     #let us create a dataframe for the x and y axis coordinates as well as the font and percentages rounded to 3 s.f
   x =c(1,2,3,4,5),
   y = c(1600, 1500, 1590, 1690, 1500), 
   label = c( displayb, displayc, displayd, displayh, displaym), 
   fontface = rep("bold", times = 5),
   fontfamily = rep("serif", times = 5)
 )
-ggplot(data = fraud , aes(x = device_location , fill = fraud_label)) +
+
+
+p10 <- ggplot(data = fraud , aes(x = device_location , fill = fraud_label)) +
   geom_bar(width = 0.8) +
   theme_classic() +
 geom_text( data = ann,
@@ -184,7 +188,6 @@ geom_text( data = ann,
     y = "Number of transactions"
   )
 
-# 6 - g
-geom_
+
 
 
