@@ -89,7 +89,6 @@ p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seems to increase slightl
       have a higher prevalence of fraud than other times.")
 
 ### Q3 - How does transaction amount vary with average transaction in terms of predicting fraud ------------------------
-
 p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) + 
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
@@ -102,7 +101,6 @@ p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, co
 # The fraudulent data points are visible in the entire range across the y and x axis. 
 
 # Q4- What proportion of international transactions are fraudulent --------------------------------------------
-
 fraud.international <- fraud %>%              #begin by group our transaction by international or not 
 group_by( is_international, fraud_label) %>% 
   summarise(
@@ -138,7 +136,6 @@ p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
 # Local transactions tend too be more fraudulent that international ones.
 
 # Q5 - How does location impact fraud ----------------------------------------------------------------
-
 fraud.location <- fraud %>%                   #begin by grouping our transactions by device location into a dataframe 
   group_by( device_location, fraud_label) %>% 
   summarise(
@@ -187,6 +184,5 @@ geom_text( data = ann,
     y = "Number of transactions"
   ) + t + s1
 
-# Hyderabad and Mumbai have a higher prevalence of fruad than other dice locations. 
-
+# Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
