@@ -135,7 +135,8 @@ p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
            label  = display1,
            family = "serif", 
            fontface = "bold") + t + s1
-  
+# Local transactions tend too be more fraudulent that international ones.
+# 
 # Q5 - How does location impact fraud ----------------------------------------------------------------
 
 fraud.location <- fraud %>%                   #begin by grouping our transactions by device location into a dataframe 
