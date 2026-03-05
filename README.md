@@ -39,16 +39,15 @@ We have multiple predictor fields:
 `fraud_label` - is the transaction fraud or not 
 
 
-**DATA EXPLORATION** 
+**EXPLORATORY DATA ANALYSIS AND DATA MINING** 
 We did preliminary exploratory with the raw data using `.head()`, `.shape()`, `.nunique()`, and `.keys()`.  
 In this we managed to find that our dataset is highly skewed in favour of the non-fraud transactions: 
 
 <img width="126" height="76" alt="Image" src="https://github.com/user-attachments/assets/ad18a307-faef-48a7-b924-6f7f53e3cdd0" />
 
-We moved into visualisations that allow us to carry out 
-Exploratory Data Analysis and Data Mining.
+We moved into visualisations in R that allow us to carry out Exploratory Data Analysis and Data Mining.
 
-[INSERT THE PICTURES AND ANALYSIS HERE]
+
 
 **DATA PREPARAION AND PRE-PROCESSING**     
 Since our ID variables are identifiers, we dropped the ID columns.  
