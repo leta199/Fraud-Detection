@@ -97,7 +97,7 @@ p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, co
                                                        values = c("0" = "green4", "1" = "red2"),
                                                        labels = c("Non fraud (0)", "Fraud (1)")) + t
 
-# There is little relationship between transaction amounts and avergae age of accounts in days.
+# There is little relationship between transaction amounts and average age of accounts in days.
 # The fraudulent data points are visible in the entire range across the y and x axis. 
 
 # Q4- What proportion of international transactions are fraudulent --------------------------------------------

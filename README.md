@@ -47,6 +47,14 @@ In this we managed to find that our dataset is highly skewed in favour of the no
 
 We moved into visualisations in R that allow us to carry out Exploratory Data Analysis and Data Mining.
 
+IP Risk Score by Fraud  
+Density 
+Our density curves of IP risk score  follow each other fairly closely until the IP score of 0.51 until 0.86
+Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
+
+Categorical and numeric variables by Fraud 
+There is little relationship between transaction amounts and avergae age of accounts in days.
+The fraudulent data points are visible in the entire range across the y and x axis. 
 
 
 **DATA PREPARAION AND PRE-PROCESSING**     
