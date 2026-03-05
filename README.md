@@ -58,10 +58,12 @@ Categorical and numeric variables by Fraud
 2) Fraud seems to increase slightly after 5 attempted logins
 3) Fraud does not seem to vary too much with other variables 
 
-Account days and avergae transaction amount by Fraud 
+Account days and average transaction amount by Fraud 
 There is little relationship between transaction amounts and avergae age of accounts in days.
 The fraudulent data points are visible in the entire range across the y and x axis. 
 
+International transactions by Fraud 
+Local transactions tend too be more fraudulent that international ones.
 
 **DATA PREPARAION AND PRE-PROCESSING**     
 Since our ID variables are identifiers, we dropped the ID columns.  
