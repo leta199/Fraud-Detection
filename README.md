@@ -63,7 +63,11 @@ There is little relationship between transaction amounts and avergae age of acco
 The fraudulent data points are visible in the entire range across the y and x axis. 
 
 International transactions by Fraud 
-Local transactions tend too be more fraudulent that international ones.
+Local transactions tend too be more fraudulent that international ones.  
+
+Location by Fraud   
+Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
+
 
 **DATA PREPARAION AND PRE-PROCESSING**     
 Since our ID variables are identifiers, we dropped the ID columns.  
