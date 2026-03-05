@@ -47,26 +47,26 @@ In this we managed to find that our dataset is highly skewed in favour of the no
 
 We moved into visualisations in R that allow us to carry out Exploratory Data Analysis and Data Mining.
 
-IP Risk Score by Fraud  
+*IP Risk Score by Fraud*  
 Density 
-Our density curves of IP risk score  follow each other fairly closely until the IP score of 0.51 until 0.86
-Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
+1) Our density curves of IP risk score  follow each other fairly closely until the IP score of 0.51 until 0.86
+2) Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
 
-Categorical and numeric variables by Fraud 
+*Categorical and numeric variables by Fraud*
 1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
       have a higher prevalence of fraud than other times."
 2) Fraud seems to increase slightly after 5 attempted logins
 3) Fraud does not seem to vary too much with other variables 
 
-Account days and average transaction amount by Fraud 
-There is little relationship between transaction amounts and avergae age of accounts in days.
-The fraudulent data points are visible in the entire range across the y and x axis. 
+*Account days and average transaction amount by Fraud*  
+1) There is little relationship between transaction amounts and avergae age of accounts in days.  
+2) The fraudulent data points are visible in the entire range across the y and x axis. 
 
-International transactions by Fraud 
-Local transactions tend too be more fraudulent that international ones.  
+*International transactions by Fraud*   
+1) Local transactions tend too be more fraudulent that international ones.  
 
-Location by Fraud   
-Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
+*Location by Fraud*     
+1) Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
 
 **DATA PREPARAION AND PRE-PROCESSING**     
