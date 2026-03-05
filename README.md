@@ -39,16 +39,15 @@ We have multiple predictor fields:
 `fraud_label` - is the transaction fraud or not 
 
 
-**EXPLORATORY DATA ANALYSIS AND DATA MINING** 
+**EXPLORATORY DATA ANALYSIS AND DATA MINING**   
 We did preliminary exploratory with the raw data using `.head()`, `.shape()`, `.nunique()`, and `.keys()`.  
-In this we managed to find that our dataset is highly skewed in favour of the non-fraud transactions: 
+In this we managed to find that our data-set is highly skewed in favour of the non-fraud transactions: 
 
 <img width="126" height="76" alt="Image" src="https://github.com/user-attachments/assets/ad18a307-faef-48a7-b924-6f7f53e3cdd0" />
 
 We moved into visualisations in R that allow us to carry out Exploratory Data Analysis and Data Mining.
 
 *IP Risk Score by Fraud*  
-Density 
 1) Our density curves of IP risk score  follow each other fairly closely until the IP score of 0.51 until 0.86
 2) Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
 
