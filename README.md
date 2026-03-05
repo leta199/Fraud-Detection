@@ -53,6 +53,12 @@ Our density curves of IP risk score  follow each other fairly closely until the 
 Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
 
 Categorical and numeric variables by Fraud 
+1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
+      have a higher prevalence of fraud than other times."
+2) Fraud seems to increase slightly after 5 attempted logins
+3) Fraud does not seem to vary too much with other variables 
+
+Account days and avergae transaction amount by Fraud 
 There is little relationship between transaction amounts and avergae age of accounts in days.
 The fraudulent data points are visible in the entire range across the y and x axis. 
 
