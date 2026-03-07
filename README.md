@@ -151,18 +151,18 @@ Caution - it is important to only use re-smpling on the train data to prevent da
 
 
 ## PROJECT STRUCTURE      
-|[Linear-Regression](https://github.com/leta199/Linear-Regression)  
+|[dataset](https://github.com/leta199/Fraud-Detection/tree/main/dataset)  
 |├──[Finance application](https://github.com/leta199/Linear-Regression/tree/main/finance_application)  
 │  ├──[Linear Regression Finance Application](https://github.com/leta199/Linear-Regression/blob/main/finance_application/Linear_Regression_Finance.ipynb)   
 │  └──[Finance data](https://github.com/leta199/Linear-Regression/blob/main/finance_application/finance_data.csv)  
 │    
-|├──[model](https://github.com/leta199/Linear-Regression/tree/main/model)  
+|├──[modelling](https://github.com/leta199/Fraud-Detection/tree/main/modelling  
 │  ├──[Linear regression.py](https://github.com/leta199/Linear-Regression/blob/main/model/LinearRegression.py)      
 │  ├──[Linear Regression (core model)](https://github.com/leta199/Linear-Regression/blob/main/model/Linear_Regression.ipynb)      
 │  ├──[Mathematical logic](https://github.com/leta199/Linear-Regression/blob/main/model/Mathematical%20logic.pdf)      
 │  └──[__init__](https://github.com/leta199/Linear-Regression/blob/main/model/__init__.py)     
 │    
-|├──[data](https://github.com/leta199/Linear-Regression/tree/main/data)    
+|├──[visualisations](https://github.com/leta199/Fraud-Detection/tree/main/visualisations)    
 │  ├──[decile to cancel csv](https://github.com/leta199/Linear-Regression/blob/main/data/decile_cancel_to_trade_stock.csv)  
 │  └──[requirements](https://github.com/leta199/Linear-Regression/blob/main/data/requirements.txt)  
 |  
