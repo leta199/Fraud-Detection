@@ -165,9 +165,12 @@ Caution - it is important to only use re-smpling on the train data to prevent da
 |├──[visualisations](https://github.com/leta199/Fraud-Detection/tree/main/visualisations)    
 │  ├──[decile to cancel csv](https://github.com/leta199/Linear-Regression/blob/main/data/decile_cancel_to_trade_stock.csv)  
 │  └──[requirements](https://github.com/leta199/Linear-Regression/blob/main/data/requirements.txt)  
-|  
+|    
 |├──[License](https://github.com/leta199/Linear-Regression/blob/main/LICENSE)  
-|└──[README](https://github.com/leta199/Linear-Regression/blob/main/README.md)
+|└──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory)
+|├──[requirements](https://github.com/leta199/Fraud-Detection/blob/main/requirements.txt)  
+|└──[README](https://github.com/leta199/Fraud-Detection/blob/main/README.md)
+
 
   
 ## AUTHORS   
