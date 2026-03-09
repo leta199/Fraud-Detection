@@ -49,7 +49,7 @@ We moved into visualisations in R that allow us to carry out Exploratory Data An
 
 *IP Risk Score by Fraud*  
 1) Our density curves of IP risk score  follow each other fairly closely until the IP score of 0.51 until 0.86
-2) Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
+2) Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of  Fraud cases than Non Fraud cases.  
 
 *Categorical and numeric variables by Fraud*
 1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.

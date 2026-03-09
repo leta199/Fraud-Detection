@@ -57,7 +57,7 @@ p1 <- ggplot( data = fraud, aes(x = ip_risk_score,
   
 # Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
 # Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- 
-# this tells us that this range of IP scores has a lower probability of Non Fraud cases than Fraud cases.  
+# this tells us that this range of IP scores has a lower probability of  Fraud cases than Non Fraud cases.  
 
 
 # Q2 - How is fraud distributed in  other variables (mainly discrete ) --------------------------------------------
