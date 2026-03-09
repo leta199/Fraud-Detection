@@ -2,9 +2,8 @@
 #INSTALL NECESSARY PACKAGES ------
 #--------------------------------#
 #we have packages that handle data importing and visualisations
-
 install.packages("here")    #used for relative file paths
-library("here")          
+library("here")  
 here()                      #file path must be root of folder 
 list.files(here("dataset")) #expect to see Digital_Payment_Fraud_Detection_Dataset.csv
 
@@ -186,3 +185,12 @@ geom_text( data = ann,
 
 # Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
+# Q5 - How does location impact fraud ----------------------------------------------------------------
+p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud_label, alpha = fraud_label))+
+  geom_density()  +
+  labs( title = "Proportion of international transactions with fraud",
+        x = "Account age",
+        y = "Frequency of transactions") + s1 +
+  scale_alpha_manual(values = c("0" = 1, "1" = 0.5), guide = "none")
+
+# Local transactions tend too be more fraudulent that international ones.
