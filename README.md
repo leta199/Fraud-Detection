@@ -58,7 +58,7 @@ We moved into visualisations in R that allow us to carry out Exploratory Data An
 3) Fraud does not seem to vary too much with other variables 
 
 *Account days and average transaction amount by Fraud*  
-1) There is little relationship between transaction amounts and avergae age of accounts in days.  
+1) There is little relationship between transaction amounts and average age of accounts in days.  
 2) The fraudulent data points are visible in the entire range across the y and x axis. 
 
 *International transactions by Fraud*   
@@ -156,7 +156,7 @@ Caution - it is important to only use re-smpling on the train data to prevent da
 │  ├──[Linear Regression Finance Application](https://github.com/leta199/Linear-Regression/blob/main/finance_application/Linear_Regression_Finance.ipynb)   
 │  └──[Finance data](https://github.com/leta199/Linear-Regression/blob/main/finance_application/finance_data.csv)  
 │    
-|├──[modelling](https://github.com/leta199/Fraud-Detection/tree/main/modelling  
+|├──[modelling](https://github.com/leta199/Fraud-Detection/tree/main/modelling)  
 │  ├──[Linear regression.py](https://github.com/leta199/Linear-Regression/blob/main/model/LinearRegression.py)      
 │  ├──[Linear Regression (core model)](https://github.com/leta199/Linear-Regression/blob/main/model/Linear_Regression.ipynb)      
 │  ├──[Mathematical logic](https://github.com/leta199/Linear-Regression/blob/main/model/Mathematical%20logic.pdf)      
