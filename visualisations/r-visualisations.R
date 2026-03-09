@@ -197,5 +197,4 @@ p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud_label, alpha
   geom_vline(xintercept = 1190, color = "gray2") +
   geom_vline(xintercept = 1855, colour = "gray2") 
   
-
 # Accounts that are between 1190 and 1855 days old have a much higher prevalence of fraud than those outside that age range
