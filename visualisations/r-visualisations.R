@@ -186,6 +186,7 @@ geom_text( data = ann,
 # Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
 # Q6 - How does account age in days impact fraud ----------------------------------------------------------------
+options(scipen = 100)
 p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud_label, alpha = fraud_label))+
   geom_density()  +
   labs( title = "Density of fraud by account age in days",
@@ -194,8 +195,7 @@ p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud_label, alpha
   scale_alpha_manual(values = c("0" = 1, "1" = 0.5), guide = "none") +
   t +
   geom_vline(xintercept = 1190, color = "gray2") +
-  geom_vline(xintercept = 1860, colour = "gray2") +
-  scale_x_continuous(labels = scales::number)
+  geom_vline(xintercept = 1855, colour = "gray2") 
   
 
-# Accounts that are between 1190 and 1860 days old have a much higher prevalence of fraud than those outside that age range
+# Accounts that are between 1190 and 1855 days old have a much higher prevalence of fraud than those outside that age range
