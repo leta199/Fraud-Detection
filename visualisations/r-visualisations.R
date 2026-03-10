@@ -196,5 +196,35 @@ p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud_label, alpha
   t +
   geom_vline(xintercept = 1190, color = "gray2") +
   geom_vline(xintercept = 1855, colour = "gray2") 
-  
+  ()
 # Accounts that are between 1190 and 1855 days old have a much higher prevalence of fraud than those outside that age range
+
+
+p12 <- ggplot(data = fraud , aes(x = avg_transaction_amount))+
+  geom_density()  +
+  labs( title = "Density of fraud by account age in days",
+        x = "Account age (days)",
+        y = "Density") + s1 
+p13 - ggplot(data = fraud , aes(x = transaction_amount))+
+  geom_density()  +
+  labs( title = "Density of fraud by account age in days",
+        x = "Account age (days)",
+        y = "Density") + s1 
+
+max_amt <- max(fraud$avg_transaction_amount)
+min_amt <- min(fraud$avg_transaction_amount)
+amounts_avg <- fraud$avg_transaction_amount
+amounts_daily <- fraud$transaction_amount
+
+n <- 7500
+sample_quantiles_avg <- amounts_avg/n
+sample_quantiles_daily <- amounts_daily/n
+
+uniform_samples <- runif(n, min = min_amt, max = max_amt)
+theoretical_quantiles <- 1:n / n+1
+
+qqplot(theoretical_quantiles, sample_quantiles_avg)
+abline(0,1)
+
+qqplot(theoretical_quantiles, sample_quantiles_daily)
+abline(0,1)
