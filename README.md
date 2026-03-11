@@ -17,48 +17,29 @@ Environment: VSCode
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 ## METHODS AND TECHNIQUES  
-After importing our data we took a look into what variables we have.  
-
-The predicted variables is the "fraud label" field.   
+  
 
 **EXPLORATORY DATA ANALYSIS AND DATA MINING**   
-We did preliminary exploratory with the raw data using `.head()`, `.shape()`, `.nunique()`, and `.keys()`.  
-In this we managed to find that our data-set is highly skewed in favour of the non-fraud transactions: 
-
-<img width="126" height="76" alt="Image" src="https://github.com/user-attachments/assets/ad18a307-faef-48a7-b924-6f7f53e3cdd0" />
-
-We moved into visualisations in R that allow us to carry out Exploratory Data Analysis and Data Mining.
 
 *IP Risk Score by Fraud*  
-1) Our density curves of IP risk score  follow each other fairly closely until the IP score of 0.51 until 0.86
-2) Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- this tells us that this range of IP scores has a lower probability of  Fraud cases than Non Fraud cases.  
 
 *Categorical and numeric variables by Fraud*
-1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
-      have a higher prevalence of fraud than other times."
-2) Fraud seems to increase slightly after 5 attempted logins
-3) Fraud does not seem to vary too much with other variables 
+
 
 *Account days and average transaction amount by Fraud*  
-1) There is little relationship between transaction amounts and average age of accounts in days.  
-2) The fraudulent data points are visible in the entire range across the y and x axis. 
+
 
 *International transactions by Fraud*   
-1) Local transactions tend too be more fraudulent that international ones.  
+
 
 *Location by Fraud*     
-1) Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
+
 
 
 **DATA PREPARAION AND PRE-PROCESSING**     
-Since our ID variables are identifiers, we dropped the ID columns.  
+
 
 **Feature engineering** 
-`get_dummies()` - is a pandas function that helps transform categorical variables into numerical values that can be used in binary classification.  
-We apply the get dummies function to the categorical fields of `transaction_type`, `payment_mode`, `device_type`, `device_location`.
-
-
-
 
 **EVAULATION AND TESTING**   
 
