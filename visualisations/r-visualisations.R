@@ -5,7 +5,7 @@
 install.packages("here")    #used for relative file paths
 library("here")  
 here()                      #file path must be root of folder 
-list.files(here("dataset")) #expect to see Digital_Payment_Fraud_Detection_Dataset.csv
+list.files(here("dataset")) #expect to see train_data.csv
 
 install.packages("tidyverse") #visualisation suite 
 library("tidyverse")
@@ -17,15 +17,14 @@ library("patchwork")
 #IMPORT AND CLEANING THE DATASET -----
 #------------------------------------#
 
-fraud <- read.csv(here("dataset", "Digital_Payment_Fraud_Detection_Dataset.csv"))
+fraud <- read.csv(here("dataset", "train_data.csv"))
 
-fraud$fraud_label <- factor(fraud$fraud_lab)              #fraud_label from numeric to factor (categorical)
+fraud$fraud <- factor(fraud$fraud)              #fraud from numeric to factor (categorical)
 fraud$is_international <- factor(fraud$is_international)  #is_international from numeric to factor (categorical)
 summary(fraud) #our fraud label has been transformed into factor of two levels: 0 no fraud, 1 fraud 
 
 View(fraud) #looking at our data in RStudio 
-table(fraud$fraud_label) #large prevalence of fraud: 6.52% fraud vs 93.48% not fraud
-
+table(fraud$fraud) #large prevalence of fraud: 6.51% fraud vs 93.48% not fraud
 # Now we can start with our visualisations 
 
 #------------------------------------#
@@ -43,52 +42,57 @@ t <- theme_bw()
 
 # Q1 - What is the breakdown of IP Risk Score by fraud label using densities --------------------------------------------
 p1 <- ggplot( data = fraud, aes(x = ip_risk_score, 
-                          fill = fraud_label,
-                          alpha = fraud_label)) +
+                          fill = fraud,
+                          alpha = fraud)) +
     geom_density() +
     scale_alpha_manual(values = c("0" = 1, "1" = 0.5), guide = "none") +
     geom_vline(xintercept = 0.51, color = "gray2") +
-    geom_vline(xintercept = 0.86, colour = "gray2") +
+    geom_vline(xintercept = 0.885, colour = "gray2") +
+  geom_vline(xintercept = 0.25, color = "gray2") +
+  geom_vline(xintercept = 0.48, colour = "gray2") +
+  geom_vline(xintercept = 0.09, colour = "red4") +
     labs( title = "Density of IP Risk score by Fraud prevalence",
           x = "Ip risk score",
           y = " Density") +
     t + s1
-  
-# Our density curves follow each other fairly closely until the IP score of 0.51 until 0.86
-# Since density is a description of the probability distribution of IP score broken down by fraud and not fraud- 
-# this tells us that this range of IP scores has a lower probability of  Fraud cases than Non Fraud cases.  
-
+# This density curve tells us the  probability of finding fraud and non fraud transaction in the relevant ranges (through area under curve).
+# Our density curve can be broken down into 5 main regions/ ranges:
+# 0.00 - 0.09 - transactions are relatively equal share of fraud and non fraud.
+# 0.09 - 0.25 - the density of fraud cases is much larger than that of non fraud.
+# 0.25- 0.48 - the density of non fraud cases is much larger than that of  fraud.
+# 0.51 - 0.885 - the density of non fraud cases is much larger than that of  fraud.
+# 0.885 - 1.00 - fraud cases are marginally more probable. 
 
 # Q2 - How is fraud distributed in  other variables (mainly discrete ) --------------------------------------------
-p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud_label))+ 
-  geom_bar() + s +ggtitle("Fraud by Number of login attempts") +
+p2 <- ggplot(data = fraud , aes(x = login_attempts_last_24h, fill = fraud))+ 
+  geom_bar() + s1 +ggtitle("Fraud by Number of login attempts") +
   labs( x= "Number of login attempts") + t
   scale_x_discrete( limits = c(0: 8)) 
-p3 <- ggplot(data = fraud , aes(x = payment_mode, fill = fraud_label))+
-  geom_bar() + s + ggtitle("Fraud by Payment modes") +
+p3 <- ggplot(data = fraud , aes(x = payment_mode, fill = fraud))+
+  geom_bar() + s1 + ggtitle("Fraud by Payment modes") +
   labs( x= "Payment mode") + t
-p4 <- ggplot(data = fraud , aes(x = device_type, fill = fraud_label))+
-  geom_bar() + s + ggtitle("Fraud by Payment modes") +
+p4 <- ggplot(data = fraud , aes(x = device_type, fill = fraud))+
+  geom_bar() + s1 + ggtitle("Fraud by Payment modes") +
   labs( x= "Device type") + t
-p5 <- ggplot(data = fraud , aes(x = transaction_type, fill = fraud_label))+
-  geom_bar() + s + ggtitle("Fraud by Transaction types") +
+p5 <- ggplot(data = fraud , aes(x = transaction_type, fill = fraud))+
+  geom_bar() + s1 + ggtitle("Fraud by Transaction types") +
   labs( x= "Transaction type") + t
-p6 <- ggplot(data = fraud , aes(x = transaction_hour, fill = fraud_label))+
-  geom_bar() + s + ggtitle("Fraud by Transaction hour") + 
+p6 <- ggplot(data = fraud , aes(x = transaction_hour, fill = fraud))+
+  geom_bar() + s1 + ggtitle("Fraud by Transaction hour") + 
   scale_x_discrete( limits = c(0: 23)) +
   labs( x= "Time of transaction") + t
-p7 <- ggplot(data = fraud , aes(x = previous_failed_attempts, fill = fraud_label))+
-  geom_bar() +s  + ggtitle("Fraud by Numer of failed attempts") +
+p7 <- ggplot(data = fraud , aes(x = previous_failed_attempts, fill = fraud))+
+  geom_bar() + s1  + ggtitle("Fraud by Numer of failed attempts") +
   labs( x= "Number of previous failed attempts") + t
 
 # creating a patchwork of categorical and discrete numeric variables broken down by fraud
 p6/ (p2 + p3 + p4 + p5 + p7 + grid::textGrob("2) Fraud seems to increase slightly after 5 attempted logins\n3) Fraud does not seem to vary too much with other variables ")) +
   plot_annotation(title = "How are our categorical and discrete variables broken down by Fraud?",
-                  subtitle = " 1) We see that the hours of 02:00 a.m., 5:00 a.m., 08:00 a.m., 13:00 p.m. and 18:00 p.m.
+                  subtitle = " 1) We see that the hours of 02:00 a.m., 03:00 a.m., 5:00 a.m., 07:00 a.m.,  08:00 a.m.,11:00 a.m., 13:00 p.m., 18:00 p.m., 19:00 p.m., and 21:00 p.m.
       have a higher prevalence of fraud than other times.")
 
 ### Q3 - How does transaction amount vary with average transaction in terms of predicting fraud ------------------------
-p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud_label)) + 
+p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, colour = fraud)) + 
   geom_point() +
   labs( title = "Transaction amount vs average transaction amount",
         x = "Transaction amount",
@@ -101,7 +105,7 @@ p8 <- ggplot( data = fraud, aes(x = transaction_amount, y = account_age_days, co
 
 # Q4- What proportion of international transactions are fraudulent --------------------------------------------
 fraud.international <- fraud %>%              #begin by group our transaction by international or not 
-group_by( is_international, fraud_label) %>% 
+group_by( is_international, fraud) %>% 
   summarise(
     count = n()) 
 
@@ -115,7 +119,7 @@ display0 <-  paste0(round(prop0[2],3)*100,"% of transactions are fraud") #gettin
 display1 <- paste0(round(prop1[2],3)*100,"% of transactions are fraud")
 
 
-p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
+p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud))+
   geom_bar()  +
   labs( title = "Proportion of international transactions with fraud",
         x = "Is transaction international?",
@@ -132,11 +136,11 @@ p9 <- ggplot(data = fraud , aes(x = is_international, fill = fraud_label))+
            label  = display1,
            family = "serif", 
            fontface = "bold") + t + s1
-# Local transactions tend too be more fraudulent that international ones.
+# Local transactions tend too be more fraudulent than international ones 6.7% vs 4.6%. 
 
 # Q5 - How does location impact fraud ----------------------------------------------------------------
 fraud.location <- fraud %>%                   #begin by grouping our transactions by device location into a dataframe 
-  group_by( device_location, fraud_label) %>% 
+  group_by( device_location, fraud) %>% 
   summarise(
     count = n()) 
 
@@ -168,7 +172,7 @@ ann <- data.frame(                                     #let us create a datafram
 )
 
 
-p10 <- ggplot(data = fraud , aes(x = device_location , fill = fraud_label)) +
+p10 <- ggplot(data = fraud , aes(x = device_location , fill = fraud)) +
   geom_bar(width = 0.8) +
 geom_text( data = ann,
           aes( x= x,
@@ -187,19 +191,19 @@ geom_text( data = ann,
 
 # Q6 - How does account age in days impact fraud ----------------------------------------------------------------
 options(scipen = 100)
-p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud_label, alpha = fraud_label))+
+p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud, alpha = fraud))+
   geom_density()  +
   labs( title = "Density of fraud by account age in days",
         x = "Account age (days)",
         y = "Density") + s1 +
   scale_alpha_manual(values = c("0" = 1, "1" = 0.5), guide = "none") +
   t +
-  geom_vline(xintercept = 1190, color = "gray2") +
-  geom_vline(xintercept = 1855, colour = "gray2") 
-  ()
-# Accounts that are between 1190 and 1855 days old have a much higher prevalence of fraud than those outside that age range
+  geom_vline(xintercept = 1017, color = "gray2") +
+  geom_vline(xintercept = 1845, colour = "gray2") 
 
+# Accounts that are between 1017 and 1845 days old have a much higher prevalence of fraud than those outside that age range
 
+#Q7 - what is the distribution of our transaction amounts -------------------------------------------------------------
 p12 <- ggplot(data = fraud , aes(x = avg_transaction_amount))+
   geom_density()  +
   labs( title = "Density of fraud by account age in days",
