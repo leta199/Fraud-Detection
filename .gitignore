@@ -1,0 +1,14 @@
+# Mac system files
+.DS_Store
+
+# R workspace and history
+.RData
+.Rhistory
+
+# Jupyter and Python clutter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Virtual Environment (Don't upload the whole folder!)
+fraud-detect/
