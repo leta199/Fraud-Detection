@@ -204,31 +204,42 @@ p11 <- ggplot(data = fraud , aes(x = account_age_days, fill = fraud, alpha = fra
 # Accounts that are between 1017 and 1845 days old have a much higher prevalence of fraud than those outside that age range
 
 #Q7 - what is the distribution of our transaction amounts -------------------------------------------------------------
-p12 <- ggplot(data = fraud , aes(x = avg_transaction_amount))+
+p12 <- ggplot(data = fraud , aes(x = avg_transaction_amount) )+
   geom_density()  +
-  labs( title = "Density of fraud by account age in days",
-        x = "Account age (days)",
+  labs( title = "Density of fraud by average transaction amount",
+        x = "Average transaction amount (Rupee)",
         y = "Density") + s1 
+# Average transaction seem to follow a normal distribution. 
 p13 - ggplot(data = fraud , aes(x = transaction_amount))+
   geom_density()  +
-  labs( title = "Density of fraud by account age in days",
-        x = "Account age (days)",
+  labs( title = "Density of fraud by  transaction amount",
+        x = "Transaction amount (Rupee)",
         y = "Density") + s1 
-
+# Transaction seem to follow a normal distribution. 
 max_amt <- max(fraud$avg_transaction_amount)
 min_amt <- min(fraud$avg_transaction_amount)
 amounts_avg <- fraud$avg_transaction_amount
 amounts_daily <- fraud$transaction_amount
 
-n <- 7500
+n <- 5250
 sample_quantiles_avg <- amounts_avg/n
 sample_quantiles_daily <- amounts_daily/n
 
 uniform_samples <- runif(n, min = min_amt, max = max_amt)
 theoretical_quantiles <- 1:n / n+1
 
-qqplot(theoretical_quantiles, sample_quantiles_avg)
+qqplot(theoretical_quantiles, sample_quantiles_avg, col = "green4",
+    main = "QQ plot of sample quantiles vs uniform quantiles (avg transaction amount)",
+    xlab = "theoretical uniform quantiles",
+    ylab = "Average transaction sample quantiles")
 abline(0,1)
 
-qqplot(theoretical_quantiles, sample_quantiles_daily)
+qqplot(theoretical_quantiles, sample_quantiles_daily, col = "pink",
+       main = "QQ plot of sample quantiles vs uniform quantiles (transaction amount)",
+       xlab = "theoretical uniform quantiles",
+       ylab = "Transaction sample quantiles")
+
 abline(0,1)
+
+# Both the average transaction amount and the transaction amount follow a normal distribution 
+# Both variables have a wider variance due the greater slope in our qqplots.
