@@ -40,7 +40,7 @@ Environment: VSCode
 
 
 **Feature engineering** 
-
+set
 **EVAULATION AND TESTING**   
 
 **SMOTE**   
