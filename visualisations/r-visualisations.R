@@ -243,3 +243,15 @@ abline(0,1)
 
 # Both the average transaction amount and the transaction amount follow a normal distribution 
 # Both variables have a wider variance due the greater slope in our qqplots.
+
+install.packages("corrplot")
+library(corrplot)
+
+corr_data <- fraud %>% 
+  select(where(is.numeric))
+         
+correlation_plot <- cor(corr_data)
+
+corrplot(correlation_plot,
+         method = "number",
+         type = "upper")
