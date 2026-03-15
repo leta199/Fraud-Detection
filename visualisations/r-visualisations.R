@@ -2,16 +2,20 @@
 #INSTALL NECESSARY PACKAGES ------
 #--------------------------------#
 #we have packages that handle data importing and visualisations
-install.packages("here")    #used for relative file paths
+install.packages("here")    # used for relative file paths
 library("here")  
-here()                      #file path must be root of folder 
-list.files(here("dataset")) #expect to see train_data.csv
+here()                      # file path must be root of folder 
+list.files(here("dataset")) # expect to see train_data.csv
 
-install.packages("tidyverse") #visualisation suite 
+install.packages("tidyverse") # visualisation suite 
 library("tidyverse")
 
-install.packages("patchwork") #putting together visualisations in EDA
+install.packages("patchwork") # putting together visualisations in EDA
 library("patchwork")
+
+install.packages("corrplot") # creating our correlation plots 
+library(corrplot)
+
 
 #------------------------------------#
 #IMPORT AND CLEANING THE DATASET -----
@@ -241,17 +245,26 @@ qqplot(theoretical_quantiles, sample_quantiles_daily, col = "pink",
 
 abline(0,1)
 
-# Both the average transaction amount and the transaction amount follow a normal distribution 
+# Both the average transaction amount and the transaction amount follow a normal distribution. 
 # Both variables have a wider variance due the greater slope in our qqplots.
 
-install.packages("corrplot")
-library(corrplot)
 
-corr_data <- fraud %>% 
+# Q8 - What are the correlations between our variables?  ----------------------------------------------------------------
+
+corr_data <- fraud %>%
+  mutate(fraud_label = as.numeric(as.factor(fraud)) - 1) %>% 
   select(where(is.numeric))
-         
-correlation_plot <- cor(corr_data)
 
+correlation_plot <- cor(corr_data, use = "complete.obs")
+colours <- colorRampPalette(c("brown","green","red"))(200)
+
+corrplot(correlation_plot, method = "color", type = "upper", col = colours )
+         
 corrplot(correlation_plot,
          method = "number",
          type = "upper")
+
+dev.off()
+
+# Our numeric variables od not have a very high correlation with the Fraud label.
+# The numeric variables also do not have high correlation with each other.
