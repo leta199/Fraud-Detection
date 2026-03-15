@@ -256,14 +256,13 @@ corr_data <- fraud %>%
   select(where(is.numeric))
 
 correlation_plot <- cor(corr_data, use = "complete.obs")
-colours <- colorRampPalette(c("brown","green","red"))(200)
+colours <- colorRampPalette(c("green","brown","red"))(200)
 
-corrplot(correlation_plot, method = "color", type = "upper", col = colours )
+corrplot(correlation_plot, method = "number", type = "lower", col = colours ,
+         main= "Lower correlation plot",
+         mar = c(0,0,2,0)
+         )
          
-corrplot(correlation_plot,
-         method = "number",
-         type = "upper")
-
 dev.off()
 
 # Our numeric variables od not have a very high correlation with the Fraud label.
