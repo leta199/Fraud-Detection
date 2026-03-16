@@ -56,13 +56,13 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
 **Weird Distribution Analysis**
-I used a Q-Q Plot to compare the transaction amounts against a theoretical normal distribution.
+I used a `Q-Q Plot` to compare the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
 
 In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
 
-I also used corrleation heat map to see what features may have been most important but all the features were very minimally correlated with each other and
-
+I also used `Correlation heat map` to see what features may have been most important but all the features were very minimally correlated with each other and
+<img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
 
 This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 
@@ -76,7 +76,7 @@ This allowed for reproducible "fit" and "transform" operations across training a
 These classes were called `ETL_numeric` and `ETL_categorical`.  
 Custom ETL Classes I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns—was identically applied to the test data.
 
-**The fit() and transform() Logic** 
+**The fit() and transform() Logic**    
 By following the Scikit-Learn API structure, I implemented:
 
 fit(): Calculated the necessary statistics from the training data. 
@@ -95,7 +95,7 @@ This architecture prevents data leakage by encapsulating the fit() and transform
 
 With the features engineered, I utilized advanced resampling and optimization techniques to handle the imbalanced nature of fraud.
 
-SMOTE ENN:   
+`SMOTE-ENN`:   
 Courtesy of Geekforgeeks there is a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
@@ -104,7 +104,7 @@ It helps prevent overfitting and allows models to learn patterns that predict mi
 I then generated synthetic fraud cases to balance the classes.    
 As the data was diffcult to get a signal from ENN allowed elimination of neighbours that were to similar to non fraud categories. 
 
-GridSearchCV: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Logistic regression mode using 50 iterations of RandomizedSerachCV.
+`GridSearchCV`: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Logistic regression mode using 50 iterations of RandomizedSerachCV.
 
 ## FINAL INSIGHTS
 
