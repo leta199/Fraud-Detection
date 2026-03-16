@@ -90,25 +90,23 @@ transform(): Applied those calculated values to both the training and test datas
 
 Encoding: Implemented OneHotEncoder and StandardScaler within a ColumnTransformer to handle categorical and numerical features in a single pass.
 
-MODELLING & OPTIMISATION
-ARCHITECTURE
+`Pipeline` - Combined custom transformers into a streamlined  automation to ensure all pre-processing steps are applied atomically during both training and inference.   
+This architecture prevents data leakage by encapsulating the fit() and transform() logic within a single executable object.
 
 With the features engineered, I utilized advanced resampling and optimization techniques to handle the imbalanced nature of fraud.
 
 SMOTE ENN:   
-Courtesy of Geekforgeeks there sis a method we can use for highly unbalanced datasets called SMOTE.  
+Courtesy of Geekforgeeks there is a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
 It helps prevent overfitting and allows models to learn patterns that predict minority class. 
-
-[Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
 
 I then generated synthetic fraud cases to balance the classes.    
 As the data was diffcult to get a signal from ENN allowed elimination of neighbours that were to similar to non fraud categories. 
 
 GridSearchCV: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Logistic regression mode using 50 iterations of RandomizedSerachCV.
 
-FINAL INSIGHTS: THE "LOST CAUSE" CONCLUSION
+## FINAL INSIGHTS
 
 <img width="273" height="112" alt="Image" src="https://github.com/user-attachments/assets/7816cc82-3b37-47c3-a135-0b4d057548ed" />
 
@@ -135,7 +133,7 @@ I did learn a lot form this project even with the underwhelming results, mainly:
 
 - `feature engineering`.
 - various `scikit-learn` and `imbalanced-learn` tools like Logistic regression, SMOTE, Pipelines, Grid search and Randomised Search and  Columntransformer and Function transformer to create your own transformers and fitters.
-- `numpy`  like arrays that can vectorise caluclations. 
+- `numpy`  like arrays that can vectorise calculations. 
 - `pandas` functionality like groupby and getting dummies. 
 - basic python functionality like dictionaries. 
 - overall project structure. 
@@ -164,7 +162,16 @@ It proved that while the engineering was sound, the high Bayes Error Rate of the
 |├──[requirements](https://github.com/leta199/Fraud-Detection/blob/main/requirements.txt)  
 |└──[README](https://github.com/leta199/Fraud-Detection/blob/main/README.md)
 
+## USEFUL EDUCATIONAL RESOURCES    
+[Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
 
-  
+## WHAT DOES THE FUTURE HOLD?   
+1) Carry out EDA to discovery what variables have the most relevance to fraud 
+2) Create custom fit and transform classes   
+3) Create custom pipelines to automate the modelling process 
+4) Create custom column transformer to apply one hot encoding and feature scaling      
+5) Use qq-plots to look into distribution of variables     
+
+
 ## AUTHORS   
 [leta199](https://github.com/leta199)
