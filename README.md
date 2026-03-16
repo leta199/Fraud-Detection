@@ -167,7 +167,7 @@ It proved that while the engineering was sound, the high Bayes Error Rate of the
 │  └──[r-visualisations](https://github.com/leta199/Fraud-Detection/blob/main/visualisations/r-visualisations.R)  
 |    
 |├──[License](https://github.com/leta199/Linear-Regression/blob/main/LICENSE)  
-|└──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory). 
+|└──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory) 
 |├──[requirements](https://github.com/leta199/Fraud-Detection/blob/main/requirements.txt)  
 |└──[README](https://github.com/leta199/Fraud-Detection/blob/main/README.md)
 
