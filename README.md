@@ -13,7 +13,7 @@ This project will go over using scikit-learn in binary classification  for this 
 Languages used: Python (version 3.14.3),  R  (version 4.5.2)
 Environment: VSCode, RStudio 
 
-[![Version: Python 3.14.3](https://img.shields.io/badge/Python-3.14.3-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+![Python](https://img.shields.io/badge/Python-3.14-blue)
 [![Language: R](https://img.shields.io/badge/Language-R-276DC3.svg?style=flat-square)](https://www.r-project.org/)
 [![Built with RStudio](https://img.shields.io/badge/IDE-RStudio-75AADB?style=for‐the‐badge&logo=rstudio&logoColor=white)](https://www.rstudio.com/)
 ![Jupyter](https://img.shields.io/badge/Notebook-Jupyter-orange)
@@ -167,7 +167,7 @@ It proved that while the engineering was sound, the high Bayes Error Rate of the
 │  └──[r-visualisations](https://github.com/leta199/Fraud-Detection/blob/main/visualisations/r-visualisations.R)  
 |    
 |├──[License](https://github.com/leta199/Linear-Regression/blob/main/LICENSE)  
-|└──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory)   
+|├──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory)   
 |├──[requirements](https://github.com/leta199/Fraud-Detection/blob/main/requirements.txt)  
 |└──[README](https://github.com/leta199/Fraud-Detection/blob/main/README.md)
 
