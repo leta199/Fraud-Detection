@@ -29,11 +29,11 @@ I utilized density plots, bar charts and histograms, Q-Q plots and scatter matri
 *IP Risk Score by Fraud*  
 This density curve tells us the  probability of finding fraud and non fraud transaction in the relevant ranges (through area under curve).
 Our density curve can be broken down into 5 main regions/ ranges:
-0.00 - 0.09 - transactions are relatively equal share of fraud and non fraud.
-0.09 - 0.25 - the density of fraud cases is much larger than that of non fraud.
-0.25- 0.48 - the density of non fraud cases is much larger than that of  fraud.
-0.51 - 0.885 - the density of non fraud cases is much larger than that of  fraud.
-0.885 - 1.00 - fraud cases are marginally more probable. 
+- 0.00 ~ 0.09 : transactions are relatively equal share of fraud and non fraud.
+- 0.09 ~ 0.25 : the density of fraud cases is much larger than that of non fraud.
+- 0.25 ~ 0.48 : the density of non fraud cases is much larger than that of  fraud.
+- 0.51 ~ 0.885 : the density of non fraud cases is much larger than that of  fraud.
+- 0.885 ~ 1.00 : fraud cases are marginally more probable. 
 
 *Categorical and numeric variables by Fraud*
 1) We see that the hours of 02:00 a.m., 03:00 a.m., 5:00 a.m., 07:00 a.m.,  08:00 a.m.,11:00 a.m., 13:00 p.m., 18:00 p.m., 19:00 p.m., and 21:00 p.m.
@@ -52,12 +52,11 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
 
-Distributional Analysis   
+Weird Distribution Analysis   
 I used a Q-Q Plot to compare the transaction amounts against a theoretical normal distribution.
-
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
 
-Insight: In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated.
+Insight: In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
 
 FEATURE ENGINEERING & ETL
 AUTOMATED PIPELINES
