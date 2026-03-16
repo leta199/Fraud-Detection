@@ -17,7 +17,30 @@ Environment: VSCode
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 ## METHODS AND TECHNIQUES  
-  
+raud-Detection
+Built a modular fraud detection pipeline to classify financial transactions using Python and R. This project focuses on the intersection of Object-Oriented Programming (OOP), automated ETL processes, and rigorous statistical auditing to identify signal integrity in financial data.
+
+The project will:
+
+Conduct a Statistical Audit in R to identify data distribution patterns.
+
+Implement custom Python Classes for ETL and automated feature engineering.
+
+Build a robust pipeline using Scikit-Learn's fit and transform logic.
+
+Optimize high-dimensional data via SMOTE and GridSearchCV.
+
+Conclude with an adversarial "Post-Mortem" on the dataset's synthetic limitations.
+
+HOW IT'S MADE
+Languages used: Python, R
+
+Packages and modules: numpy, pandas, scikit-learn, imbalanced-learn, tidyverse
+
+Environment: VS Code and RStudio
+
+STATISTICAL AUDIT (R-INSIGHTS)
+THE DISCOVERY
 
 **EXPLORATORY DATA ANALYSIS AND DATA MINING**   
 
@@ -33,6 +56,60 @@ Environment: VSCode
 
 
 *Location by Fraud*     
+
+To identify how well the data could be modeled, I started with an Exploratory Data Analysis (EDA) in R. I utilized Q-Q plots and scatter matrices to test the underlying assumptions of the dataset.
+
+Distributional Analysis I used a Q-Q Plot to compare the transaction amounts against a theoretical normal distribution.
+
+The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
+
+Insight: In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated.
+
+FEATURE ENGINEERING & ETL
+AUTOMATED PIPELINES
+
+To handle the data cleaning and preparation, I developed a modular ETL system using custom Python classes. This allowed for reproducible "fit" and "transform" operations across training and testing sets.
+
+Custom ETL Classes I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns—was identically applied to the test data.
+
+The fit() and transform() Logic
+By following the Scikit-Learn API structure, I implemented:
+
+fit(): Calculated the necessary statistics from the training data (e.g., mean, mode, or category mappings).
+
+transform(): Applied those calculated values to both the training and test datasets. This prevents Data Leakage, ensuring the model doesn't "see" information from the future during training.
+
+Feature Engineering Steps
+Beyond standard cleaning, I engineered new features to extract hidden signals:
+
+Risk Ratios: Calculated the ratio of international transactions to account age.
+
+Velocity Metrics: Created rolling averages for transaction frequency.
+
+Encoding: Implemented OneHotEncoder and StandardScaler within a ColumnTransformer to handle categorical and numerical features in a single pass.
+
+MODELLING & OPTIMISATION
+ARCHITECTURE
+
+With the features engineered, I utilized advanced resampling and optimization techniques to handle the imbalanced nature of fraud.
+
+SMOTE: Generated synthetic fraud cases to balance the classes.
+
+GridSearchCV: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Random Forest and XGBoost.
+
+FINAL INSIGHTS: THE "LOST CAUSE" CONCLUSION
+Despite the modular ETL classes and optimized pipelines, the model performance confirmed the findings of the R-based audit.
+
+Interpretation of Output
+
+Signal Integrity: My custom transformers and engineering steps were unable to extract a signal because the fraud labels were stochastically independent of the features.
+
+Performance: R 
+2
+  and Precision-Recall metrics remained consistent with a "Zero-Signal" environment.
+
+Final Verdict: The project was a successful exercise in Adversarial Discovery. It proved that while the engineering was sound, the high Bayes Error Rate of the dataset made predictive modeling a lost cause.  
+
 
 
 
