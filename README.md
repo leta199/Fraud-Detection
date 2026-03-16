@@ -167,7 +167,7 @@ It proved that while the engineering was sound, the high Bayes Error Rate of the
 │  └──[r-visualisations](https://github.com/leta199/Fraud-Detection/blob/main/visualisations/r-visualisations.R)  
 |    
 |├──[License](https://github.com/leta199/Linear-Regression/blob/main/LICENSE)  
-|└──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory)
+|└──[R.history](https://github.com/leta199/Fraud-Detection/blob/main/.Rhistory). 
 |├──[requirements](https://github.com/leta199/Fraud-Detection/blob/main/requirements.txt)  
 |└──[README](https://github.com/leta199/Fraud-Detection/blob/main/README.md)
 
@@ -175,11 +175,11 @@ It proved that while the engineering was sound, the high Bayes Error Rate of the
 [Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
 
 ## WHAT DOES THE FUTURE HOLD?   
-1) Carry out EDA to discovery what variables have the most relevance to fraud 
-2) Create custom fit and transform classes   
-3) Create custom pipelines to automate the modelling process 
-4) Create custom column transformer to apply one hot encoding and feature scaling      
-5) Use qq-plots to look into distribution of variables     
+1) Carry out EDA to discovery what variables have the most relevance to fraud ✅
+2) Create custom fit and transform classes ✅
+3) Create custom pipelines to automate the modelling process ✅
+4) Create custom column transformer to apply one hot encoding and feature scaling ✅     
+5) Use qq-plots to look into distribution of variables ✅   
 
 
 ## AUTHORS   
