@@ -55,17 +55,14 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 *Location by Fraud*     
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
-
-*Weird Distribution Analysis*
+**Weird Distribution Analysis**
 I used a Q-Q Plot to compare the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
-<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/19293900-b7bb-4d34-90ad-4d4f48685f22" />
-<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/acede8ef-e6c6-41b6-9042-174f6aeb6bd7" />
 
 In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
 
 I also used corrleation heat map to see what features may have been most important but all the features were very minimally correlated with each other and
-<img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/81024168-782f-40c9-9a0d-5d299fbafad2" />
+
 
 This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 
@@ -79,72 +76,72 @@ This allowed for reproducible "fit" and "transform" operations across training a
 These classes were called `ETL_numeric` and `ETL_categorical`.  
 Custom ETL Classes I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns—was identically applied to the test data.
 
-*The fit() and transform() Logic*
+**The fit() and transform() Logic** 
 By following the Scikit-Learn API structure, I implemented:
 
-fit(): Calculated the necessary statistics from the training data.
-`ETL_numeric` - involved calculating numeric interactions such as:
-`ATO score` = (ip risk score + login attempts)/ account age,     
-`z-scores` using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group
+fit(): Calculated the necessary statistics from the training data. 
+`ETL_numeric` - involved calculating numeric interactions such as:  
+`ATO score` = (ip risk score + login attempts)/ account age (velocity metric)       
+`z-scores` using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group.  
 
-`ETL_categorical` - involved calculating the rarites of catgeorical features based on each user's histprical transaction data.   
-
+`ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
 
 transform(): Applied those calculated values to both the training and test datasets. This prevents Data Leakage, ensuring the model doesn't "see" information from the future during training.
 
-Feature Engineering Steps
-Beyond standard cleaning, I engineered new features to extract hidden signals:
-
-Risk Ratios: Calculated the ratio of international transactions to account age.
-
-Velocity Metrics: Created rolling averages for transaction frequency.
-
 Encoding: Implemented OneHotEncoder and StandardScaler within a ColumnTransformer to handle categorical and numerical features in a single pass.
-
-
 
 MODELLING & OPTIMISATION
 ARCHITECTURE
 
 With the features engineered, I utilized advanced resampling and optimization techniques to handle the imbalanced nature of fraud.
 
-SMOTE: Generated synthetic fraud cases to balance the classes.
-
-GridSearchCV: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Random Forest and XGBoost.
-
-FINAL INSIGHTS: THE "LOST CAUSE" CONCLUSION
-Despite the modular ETL classes and optimized pipelines, the model performance confirmed the findings of the R-based audit.
-
-Interpretation of Output
-
-Signal Integrity: My custom transformers and engineering steps were unable to extract a signal because the fraud labels were stochastically independent of the features.
-
-Performance: R 
-2
-  and Precision-Recall metrics remained consistent with a "Zero-Signal" environment.
-
-Final Verdict: The project was a successful exercise in Adversarial Discovery. It proved that while the engineering was sound, the high Bayes Error Rate of the dataset made predictive modeling a lost cause.  
-
-
-
-
-**DATA PREPARAION AND PRE-PROCESSING**     
-
-
-**Feature engineering** 
-set
-**EVAULATION AND TESTING**   
-
-**SMOTE**   
+SMOTE ENN:   
 Courtesy of Geekforgeeks there sis a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
-It helps prevent overfitting and allows models to learn patterns that predict minority class.   
-
-Caution - it is important to only use re-smpling on the train data to prevent data leakage. 
+It helps prevent overfitting and allows models to learn patterns that predict minority class. 
 
 [Geekforgeeks - SMOTE](https://www.geeksforgeeks.org/machine-learning/smote-for-imbalanced-classification-with-python/)
 
+I then generated synthetic fraud cases to balance the classes.    
+As the data was diffcult to get a signal from ENN allowed elimination of neighbours that were to similar to non fraud categories. 
+
+GridSearchCV: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Logistic regression mode using 50 iterations of RandomizedSerachCV.
+
+FINAL INSIGHTS: THE "LOST CAUSE" CONCLUSION
+
+<img width="273" height="112" alt="Image" src="https://github.com/user-attachments/assets/7816cc82-3b37-47c3-a135-0b4d057548ed" />
+
+Despite the modular ETL classes and optimized pipelines, the model performance confirmed the findings of the R-based audit.
+
+Interpretation of Output
+Signal Integrity: My custom transformers and engineering steps were unable to extract a signal because the fraud labels were stochastically independent of the features.
+
+Performance: Precision and Recall metrics remained consistent with a "Zero-Signal" environment.
+
+**Final Verdict**:   
+The project was a successful exercise in Adversarial Discovery.   
+
+I did learn though that no matter what model you use, the old adage stays true: "Garbage in, garbage out".   
+Our recall improved drastically after we engineered good features with great predictive power.   
+After conducting further EDA particularly the qq plots, I think there may have also been a bottleneck in data quality.   
+Both transactions following a uniform distribution with such low correlations between all features suggested the data may have been independently generted column by column with fraud labels added later. It is highly unlikely that every transactin amount range is equally as dense as transactions tend to be right skewed or log normal.   
+
+The main limitations were therefore:
+- data quality 
+- highly unbalanced dataset 
+
+I did learn a lot form this project even with the underwhelming results, mainly:
+
+- `feature engineering`.
+- various `scikit-learn` and `imbalanced-learn` tools like Logistic regression, SMOTE, Pipelines, Grid search and Randomised Search and  Columntransformer and Function transformer to create your own transformers and fitters.
+- `numpy`  like arrays that can vectorise caluclations. 
+- `pandas` functionality like groupby and getting dummies. 
+- basic python functionality like dictionaries. 
+- overall project structure. 
+
+I would say this was a very good learning opportunity and I got to grow a lot for 1 weeks work. 
+It proved that while the engineering was sound, the high Bayes Error Rate of the dataset made predictive modeling a lost cause.  
 
 ## PROJECT STRUCTURE      
 |[dataset](https://github.com/leta199/Fraud-Detection/tree/main/dataset)  
