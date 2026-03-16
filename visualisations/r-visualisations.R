@@ -265,5 +265,12 @@ corrplot(correlation_plot, method = "number", type = "lower", col = colours ,
          
 dev.off()
 
-# Our numeric variables od not have a very high correlation with the Fraud label.
+# Our numeric variables do not have a very high correlation with the Fraud label.
 # The numeric variables also do not have high correlation with each other.
+
+
+# All of these visualisations point to the fact that:
+# 1) Not many of our variables help in determining fraud
+# 2) Transaction amounts and average transaction amount have no relationship to fraud which is very improbable 
+# 3) The data seem to be independently generated column by column with fraud added at the end without any discernible 
+# pattern
