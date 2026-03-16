@@ -5,9 +5,9 @@ The dataset is obtained from Kaggle here: [Digital Payment Fraud Detecton](https
 This project will go over using scikit-learn in binary classification  for this dataset and we will cover:   
 
 1. Exploratory Data Analysis and Data mining 
-2. Data preparation and pre-processing 
-3. Modelling 
-4. Evaluation and testing 
+2. Data pre - processing and cleaning 
+2. Modelling and evaluation 
+3. Evaluation and testing 
  
 ## HOW IT'S MADE 
 Languages used: Python (version 3.14.3),  R  (version 4.5.2)
@@ -21,9 +21,13 @@ Environment: VSCode, RStudio
 
 ## METHODS AND TECHNIQUES  
 
+*DATA PRE-PROCESSING AND CLEANING*   
+Mimicked a real life data science workflow by separating the dataset into train and test sets before any EDA to mimic new transactions.   
+Separated our predictor variables and response variable into x and y respectively. 
+
 **EXPLORATORY DATA ANALYSIS AND DATA MINING**   
-MAIN INSIGHTS
-To identify how well the data could be modeled, I started with an Exploratory Data Analysis (EDA) in R.  
+
+To identify how well the data could be modeled, I started with an Exploratory Data Analysis (EDA) in R.      
 I utilized density plots, bar charts and histograms, Q-Q plots and scatter matrices to test the underlying assumptions of the dataset.
 
 *IP Risk Score by Fraud*  
@@ -52,23 +56,39 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
 
-Weird Distribution Analysis   
+*Weird Distribution Analysis*
 I used a Q-Q Plot to compare the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/19293900-b7bb-4d34-90ad-4d4f48685f22" />
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/acede8ef-e6c6-41b6-9042-174f6aeb6bd7" />
 
-Insight: In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
+In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
+
+I also used corrleation heat map to see what features may have been most important but all the features were very minimally correlated with each other and
+<img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/81024168-782f-40c9-9a0d-5d299fbafad2" />
+
+This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
+
+*MODELLING AND EVALUATION*
 
 FEATURE ENGINEERING & ETL
 AUTOMATED PIPELINES
 
-To handle the data cleaning and preparation, I developed a modular ETL system using custom Python classes. This allowed for reproducible "fit" and "transform" operations across training and testing sets.
-
+To handle the data cleaning and preparation, I developed two ETL system using custom Python classes that created an automated method of hadnling both numerical and categorical variables   
+This allowed for reproducible "fit" and "transform" operations across training and testing sets.  
+These classes were called `ETL_numeric` and `ETL_categorical`.  
 Custom ETL Classes I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns—was identically applied to the test data.
 
-The fit() and transform() Logic
+*The fit() and transform() Logic*
 By following the Scikit-Learn API structure, I implemented:
 
-fit(): Calculated the necessary statistics from the training data (e.g., mean, mode, or category mappings).
+fit(): Calculated the necessary statistics from the training data.
+`ETL_numeric` - involved calculating numeric interactions such as:
+`ATO score` = (ip risk score + login attempts)/ account age,     
+`z-scores` using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group
+
+`ETL_categorical` - involved calculating the rarites of catgeorical features based on each user's histprical transaction data.   
+
 
 transform(): Applied those calculated values to both the training and test datasets. This prevents Data Leakage, ensuring the model doesn't "see" information from the future during training.
 
@@ -80,6 +100,8 @@ Risk Ratios: Calculated the ratio of international transactions to account age.
 Velocity Metrics: Created rolling averages for transaction frequency.
 
 Encoding: Implemented OneHotEncoder and StandardScaler within a ColumnTransformer to handle categorical and numerical features in a single pass.
+
+
 
 MODELLING & OPTIMISATION
 ARCHITECTURE
