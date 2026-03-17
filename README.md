@@ -10,7 +10,7 @@ This project will go over using scikit-learn in binary classification  for this 
 3. Evaluation and testing 
  
 ## HOW IT'S MADE 
-Languages used: Python (version 3.14.3),  R  (version 4.5.2)
+Languages used: Python (version 3.14.3),  R  (version 4.5.2).     
 Environment: VSCode, RStudio 
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
