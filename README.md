@@ -97,7 +97,7 @@ This architecture prevents data leakage by encapsulating the fit() and transform
 With the features engineered, I utilized advanced resampling and optimization techniques to handle the imbalanced nature of fraud.
 
 `SMOTE-ENN`:   
-Courtesy of Geekforgeeks there is a method we can use for highly unbalanced datasets called SMOTE.  
+Courtesy of Geekforgeeks, there is a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
 It helps prevent overfitting and allows models to learn patterns that predict minority class. 
