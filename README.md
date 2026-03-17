@@ -89,7 +89,7 @@ fit(): Calculated the necessary statistics from the training data.
 
 transform(): Applied those calculated values to both the training and test datasets. This prevents Data Leakage, ensuring the model doesn't "see" information from the future during training.
 
-Encoding: Implemented OneHotEncoder and StandardScaler within a ColumnTransformer to handle categorical and numerical features in a single pass.
+Encoding: Implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
 
 `Pipeline` - Combined custom transformers into a streamlined  automation to ensure all pre-processing steps are applied atomically during both training and inference.   
 This architecture prevents data leakage by encapsulating the fit() and transform() logic within a single executable object.
