@@ -55,7 +55,7 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 *Location by Fraud*     
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 
-**Weird Distribution Analysis**. 
+**Weird Distribution Analysis** 
 I used a `Q-Q Plot` to compare the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
 
@@ -74,12 +74,13 @@ AUTOMATED PIPELINES
 To handle the data cleaning and preparation, I developed two ETL system using custom Python classes that created an automated method of hadnling both numerical and categorical variables   
 This allowed for reproducible "fit" and "transform" operations across training and testing sets.  
 These classes were called `ETL_numeric` and `ETL_categorical`.  
+
 Custom ETL Classes I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns—was identically applied to the test data.
 
 **The fit() and transform() Logic**    
 By following the Scikit-Learn API structure, I implemented:
 
-fit(): Calculated the necessary statistics from the training data. 
+fit(): Calculated the necessary statistics from the training data.   
 `ETL_numeric` - involved calculating numeric interactions such as:  
 `ATO score` = (ip risk score + login attempts)/ account age (velocity metric)       
 `z-scores` using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group.  
