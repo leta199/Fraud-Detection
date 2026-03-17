@@ -21,7 +21,7 @@ Environment: VSCode, RStudio
 
 ## METHODS AND TECHNIQUES  
 
-*DATA PRE-PROCESSING AND CLEANING*   
+**DATA PRE-PROCESSING AND CLEANING**   
 Mimicked a real life data science workflow by separating the dataset into train and test sets before any EDA to mimic new transactions.   
 Separated our predictor variables and response variable into x and y respectively. 
 
@@ -66,7 +66,7 @@ I also used `Correlation heat map` to see what features may have been most impor
 
 This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 
-*MODELLING AND EVALUATION*
+**MODELLING, EVALUATION AND TESTING**
 
 FEATURE ENGINEERING & ETL
 AUTOMATED PIPELINES
@@ -118,7 +118,7 @@ Signal Integrity: My custom transformers and engineering steps were unable to ex
 
 Performance: Precision and Recall metrics remained consistent with a "Zero-Signal" environment.
 
-**Final Verdict**:   
+**Final Verdict**   
 The project was a successful exercise in Adversarial Discovery.   
 
 I did learn though that no matter what model you use, the old adage stays true: "Garbage in, garbage out".   
