@@ -38,6 +38,7 @@ Our density curve can be broken down into 5 main regions/ ranges:
 - 0.25 ~ 0.48 : the density of non fraud cases is much larger than that of  fraud.
 - 0.51 ~ 0.885 : the density of non fraud cases is much larger than that of  fraud.
 - 0.885 ~ 1.00 : fraud cases are marginally more probable. 
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/5bfa6365-488b-429e-8b4d-ab061a1f0b70" />
 
 *Categorical and numeric variables by Fraud*
 1) We see that the hours of 02:00 a.m., 03:00 a.m., 5:00 a.m., 07:00 a.m.,  08:00 a.m.,11:00 a.m., 13:00 p.m., 18:00 p.m., 19:00 p.m., and 21:00 p.m.
