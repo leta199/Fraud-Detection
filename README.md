@@ -50,6 +50,7 @@ Our density curve can be broken down into 5 main regions/ ranges:
 *Account days and average transaction amount by Fraud*  
 There is little relationship between transaction amounts and average age of accounts in days.
 The fraudulent data points are visible in the entire range across the y and x axis. 
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/904426b0-f25c-4302-a448-6aa36e56c4d0" />
 
 *International transactions by Fraud*   
 Local transactions tend too be more fraudulent than international ones 6.7% vs 4.6%. 
