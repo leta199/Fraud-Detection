@@ -62,7 +62,7 @@ Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations
 I used a `Q-Q Plot` to compare the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
 
-In real-world finance, transaction amounts are typically skewed; this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
+In real-world finance, transaction amounts are typically right skewed (transactions of smaller amounts are more frequent thn larger amounts); this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
 
 I also used `Correlation heat map` to see what features may have been most important but all the features were very minimally correlated with each other and
 <img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
