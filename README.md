@@ -62,7 +62,8 @@ Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations
 
 **Weird Distribution Analysis**   
 I used a `Q-Q Plot` to compare the transaction amounts against a theoretical normal distribution.
-The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).
+The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).  
+- The gradient of the values plotted is greater than our y = x trend line whihch means that the varaince of the sample data is greater than for a standrd nomral equation. 
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/48bdb731-a206-45ce-970c-8cecc9ab6df9" />
 
 In real-world finance, transaction amounts are typically right skewed (transactions of smaller amounts are more frequent thn larger amounts); this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
