@@ -66,6 +66,8 @@ The result was a perfectly linear relationship, indicating the data follows a Un
 - The gradient of the values plotted is greater than our y = x trend line whihch means that the varaince of the sample data is greater than for a standrd nomral equation. 
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/48bdb731-a206-45ce-970c-8cecc9ab6df9" />
 
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/4d74ff65-13d5-4054-9a9f-32ccf92cad4e" />
+
 In real-world finance, transaction amounts are typically right skewed (transactions of smaller amounts are more frequent thn larger amounts); this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
 
 I also used `Correlation heat map` to see what features may have been most important but all the features were very minimally correlated with each other and
