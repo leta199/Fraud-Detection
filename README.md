@@ -54,6 +54,7 @@ The fraudulent data points are visible in the entire range across the y and x ax
 
 *International transactions by Fraud*   
 Local transactions tend too be more fraudulent than international ones 6.7% vs 4.6%. 
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/4bc6f03a-59cb-4601-8d02-0bae18133276" />
 
 *Location by Fraud*     
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
