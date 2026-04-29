@@ -61,7 +61,7 @@ Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/2b289a0c-3819-404f-a20a-c9db14cc8921" />
 
 **Weird Distribution Analysis**   
-I used a `Q-Q Plot` to compare the transaction amounts against a theoretical normal distribution.
+`Q-Q Plot`  compared the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).  
 - The gradient of the values plotted is greater than our y = x trend line whihch means that the varaince of the sample data is greater than for a standrd nomral equation. 
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/48bdb731-a206-45ce-970c-8cecc9ab6df9" />
@@ -70,10 +70,9 @@ The result was a perfectly linear relationship, indicating the data follows a Un
 
 In real-world finance, transaction amounts are typically right skewed (transactions of smaller amounts are more frequent thn larger amounts); this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
 
-I also used `Correlation heat map` to see what features may have been most important but all the features were very minimally correlated with each other and
+ `Correlation heat map` revealed what features may have been most important but all the features were very minimally correlated with each other 
+- This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 <img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
-
-This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 
 **MODELLING, EVALUATION AND TESTING**
 
