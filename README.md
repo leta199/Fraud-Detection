@@ -58,6 +58,7 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 
 *Location by Fraud*     
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/2b289a0c-3819-404f-a20a-c9db14cc8921" />
 
 **Weird Distribution Analysis** 
 I used a `Q-Q Plot` to compare the transaction amounts against a theoretical normal distribution.
