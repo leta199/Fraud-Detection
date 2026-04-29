@@ -45,6 +45,7 @@ Our density curve can be broken down into 5 main regions/ ranges:
       have a higher prevalence of fraud than other times.
 2) Fraud seems to increase slightly after 5 attempted logins.
 3) Fraud does not seem to vary too much with other variables
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/9e5ace9f-420a-4ef8-a337-a50cdd6db1a7" />
 
 *Account days and average transaction amount by Fraud*  
 There is little relationship between transaction amounts and average age of accounts in days.
