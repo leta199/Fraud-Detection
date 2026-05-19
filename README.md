@@ -74,7 +74,7 @@ In real-world finance, transaction amounts are typically right skewed (transacti
 
  `Correlation heat map` 
  
- revealed what features may have been most important but all the features were very minimally correlated with each other 
+ Revealed what features may have been most important but all the features were very minimally correlated with each other 
 - This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 <img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
 
