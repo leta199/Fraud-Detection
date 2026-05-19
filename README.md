@@ -95,7 +95,14 @@ By following the Scikit-Learn API structure, I implemented:
 fit(): Calculated the necessary statistics from the training data.   
 `ETL_numeric` - involved calculating numeric interactions such as:  
 
-`ATO score` = (ip risk score + login attempts)/ account age (velocity metric)       
+`ATO score`   
+This is the Account takeover. This refers to the likelihood of someone else taking over the account throuhg hacking. It is caluclated as : 
+
+$$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age} + j} \quad \text{(Velocity Metric)}$$
+
+- This helps calculate how often an account has logins with its associated risk given its age. We expcet fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score.
+- 
+
 `z-scores` = using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group.  
 
 `ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
