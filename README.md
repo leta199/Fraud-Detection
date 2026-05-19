@@ -98,12 +98,13 @@ fit(): Calculated the necessary statistics from the training data.
 `ATO score`   
 This is the Account takeover. This refers to the likelihood of someone else taking over the account throuhg hacking. It is caluclated as : 
 
-$$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age} + j} \quad \text{(Velocity Metric)}$$
+$$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age}} \quad \text{(Velocity Metric)}$$
 
 - This helps calculate how often an account has logins with its associated risk given its age. We expcet fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score.
-- 
+- This is referred to as our velocty metric. 
 
 `z-scores` = using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group.  
+
 
 `ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
 
