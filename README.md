@@ -81,19 +81,19 @@ In real-world finance, transaction amounts are typically right skewed (transacti
 **MODELLING, EVALUATION AND TESTING**
 
 FEATURE ENGINEERING & ETL
-AUTOMATED PIPELINES
 
 To handle the data cleaning and preparation, I developed two ETL system using custom Python classes that created an automated method of hadnling both numerical and categorical variables   
 This allowed for reproducible "fit" and "transform" operations across training and testing sets.  
 These classes were called `ETL_numeric` and `ETL_categorical`.  
 
-For custom ETL Classes I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns was identically applied to the test data.
+For custom ETL pipeline I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns was identically applied to the test data.
 
 **The fit() and transform() Logic**    
 By following the Scikit-Learn API structure, I implemented:
 
 fit(): Calculated the necessary statistics from the training data.   
-`ETL_numeric` - involved calculating numeric interactions such as:  
+### ETL Numeric ###   
+Involved calculating numeric interactions such as:  
 
 `ATO score`   
 This is the Account takeover. This refers to the likelihood of someone else taking over the account throuhg hacking. It is caluclated as : 
