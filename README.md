@@ -103,8 +103,20 @@ $$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age}} \quad 
 - This helps calculate how often an account has logins with its associated risk given its age. We expcet fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score.
 - This is referred to as our velocty metric. 
 
-`z-scores` = using using linear transformations of variances each  user's average transaction amount average of their average transaction amount group.  
+`Z-scores` 
+We aim to calculate z scores from each transaction amount. In order to do this we assume that transcations amounts follow a Guassian distribution. Using the transaction amount and avg transcation amount fields we calculate z scoes with the following methodology:
 
+We will create a weighted standard devation score made up of two parts: user standard devation and group standard deviation. 
+
+$$\sigma_{\text{final}} = \frac{n}{n+k} \sigma_{\text{user}} + \frac{k}{n+k} \sigma_{\text{group}}$$ 
+
+Where k is an adjustible parameter that corresponds to number of users and n is a number of smoothing parameter.     
+This allows us to create a standard devation that is non zero so we dont have an undefined z score. 
+We can then get each user's z scores with the formula:
+
+$$Z-score = \frac{\text{Transaction Amount} - \text{Avg Transaction Amount}}{\sigma_{\text{final}}}$$
+
+This allows us to consider how unusual the transaction amount is for the group the user belongs to and for the user based on historical transctaion in the train set. 
 
 `ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
 
