@@ -25,7 +25,7 @@ Environment: VSCode, RStudio
 Mimicked a real life data science workflow by separating the dataset into train and test sets before any EDA to mimic new transactions.   
 Separated our predictor variables and response variable into x and y respectively. 
 
-**EXPLORATORY DATA ANALYSIS AND DATA MINING**   
+### EXPLORATORY DATA ANALYSIS AND DATA MINING ###    
 
 To identify how well the data could be modeled, I started with an Exploratory Data Analysis (EDA) in R.      
 I utilized density plots, bar charts and histograms, Q-Q plots and scatter matrices to test the underlying assumptions of the dataset.
@@ -60,38 +60,20 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/2b289a0c-3819-404f-a20a-c9db14cc8921" />
 
-**Weird Distribution Analysis**   
-`Q-Q Plot`    
 
-compared the transaction amounts against a theoretical normal distribution.
-The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).  
-- The gradient of the values plotted is greater than our y = x trend line whihch means that the varaince of the sample data is greater than for a standrd nomral equation. 
-<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/48bdb731-a206-45ce-970c-8cecc9ab6df9" />
 
-<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/4d74ff65-13d5-4054-9a9f-32ccf92cad4e" />
-
-In real-world finance, transaction amounts are typically right skewed (transactions of smaller amounts are more frequent thn larger amounts); this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
-
- `Correlation heat map` 
- 
- Revealed what features may have been most important but all the features were very minimally correlated with each other 
-- This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
-<img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
-
-**MODELLING, EVALUATION AND TESTING**
+### MODELLING, EVALUATION AND TESTING ### 
 
 FEATURE ENGINEERING & ETL
 
-To handle the data cleaning and preparation, I developed two ETL system using custom Python classes that created an automated method of hadnling both numerical and categorical variables   
-This allowed for reproducible "fit" and "transform" operations across training and testing sets.  
+To handle the data cleaning and preparation, I developed two ETL system using custom Python classes that created an automated method of handling both numerical and categorical variables.   
+This allowed for reproducible `fit` and `transform` operations across training and testing sets.  
 These classes were called `ETL_numeric` and `ETL_categorical`.  
 
 For custom ETL pipeline I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns was identically applied to the test data.
 
-**The fit() and transform() Logic**    
-By following the Scikit-Learn API structure, I implemented:
-
-fit(): Calculated the necessary statistics from the training data.   
+### FIT LOGIC ###
+This is what allows us to create feature based on "historical" user data (d data from the train set) that we can use to determine if transcations from tne test set are suspicious.
 ### ETL Numeric ###   
 Involved calculating numeric interactions such as:  
 
@@ -105,7 +87,6 @@ $$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age}} \quad 
 
 `Z-scores` 
 We aim to calculate z scores from each transaction amount. In order to do this we assume that transcations amounts follow a Guassian distribution. Using the transaction amount and avg transcation amount fields we calculate z scoes with the following methodology:
-
 We will create a weighted standard devation score made up of two parts: user standard devation and group standard deviation. 
 
 $$\sigma_{\text{final}} = \frac{n}{n+k} \sigma_{\text{user}} + \frac{k}{n+k} \sigma_{\text{group}}$$ 
@@ -116,7 +97,7 @@ We can then get each user's z scores with the formula:
 
 $$Z-score = \frac{\text{Transaction Amount} - \text{Avg Transaction Amount}}{\sigma_{\text{final}}}$$
 
-This allows us to consider how unusual the transaction amount is for the group the user belongs to and for the user based on historical transctaion in the train set. 
+This allows us to consider how unusual the transaction amount is for the group the user belongs to and for the user based on historical transaction in the train set. 
 
 `ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
 
@@ -139,6 +120,24 @@ I then generated synthetic fraud cases to balance the classes.
 As the data was diffcult to get a signal from ENN allowed elimination of neighbours that were to similar to non fraud categories. 
 
 `GridSearchCV`: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Logistic regression mode using 50 iterations of RandomizedSerachCV.
+
+**Weird Distribution Analysis**   
+`Q-Q Plot`    
+
+compared the transaction amounts against a theoretical normal distribution.
+The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).  
+- The gradient of the values plotted is greater than our y = x trend line whihch means that the varaince of the sample data is greater than for a standrd nomral equation. 
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/48bdb731-a206-45ce-970c-8cecc9ab6df9" />
+
+<img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/4d74ff65-13d5-4054-9a9f-32ccf92cad4e" />
+
+In real-world finance, transaction amounts are typically right skewed (transactions of smaller amounts are more frequent thn larger amounts); this perfect uniformity suggested the data was stochastically generated from a uniform distribution.
+
+ `Correlation Plot` 
+ 
+ Revealed what features may have been most important but all the features were very minimally correlated with each other 
+- This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
+<img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
 
 ## FINAL INSIGHTS
 
