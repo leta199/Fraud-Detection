@@ -62,30 +62,21 @@ Local transactions tend too be more fraudulent than international ones 6.7% vs 4
 Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations. 
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/2b289a0c-3819-404f-a20a-c9db14cc8921" />
 
-
-
 ### MODELLING, EVALUATION AND TESTING ### 
 
-FEATURE ENGINEERING & ETL
+**FEATURE ENGINEERING & ETL**
 
-To handle the data cleaning and preparation, I developed two ETL system using custom Python classes that created an automated method of handling both numerical and categorical variables.   
+To handle the data cleaning and preparation, I developed two ETL systems using custom Python classes that created an automated method of handling both numerical and categorical variables.   
 This allowed for reproducible `fit` and `transform` operations across training and testing sets.  
 These classes were called `ETL_numeric` and `ETL_categorical`.  
 
-For custom ETL pipeline I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns was identically applied to the test data.
+For the custom ETL pipeline I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns was identically applied to the test data.
 
 ### FIT LOGIC ###
-This is what allows us to create feature based on "historical" user data (d data from the train set) that we can use to determine if transcations from tne test set are suspicious.
+This is what allows us to create features based on "historical" user data ( data from the train set) that we can use to determine if transactions from tne test set are suspicious.
+
 ### ETL Numeric ###   
 Involved calculating numeric interactions such as:  
-
-`ATO score`   
-This is the Account takeover. This refers to the likelihood of someone else taking over the account throuhg hacking. It is caluclated as : 
-
-$$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age}} \quad \text{(Velocity Metric)}$$
-
-- This helps calculate how often an account has logins with its associated risk given its age. We expcet fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score.
-- This is referred to as our velocty metric. 
 
 `Z-scores` 
 We aim to calculate z scores from each transaction amount. In order to do this we assume that transcations amounts follow a Guassian distribution. Using the transaction amount and avg transcation amount fields we calculate z scoes with the following methodology:
@@ -103,7 +94,19 @@ This allows us to consider how unusual the transaction amount is for the group t
 
 `ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
 
-transform(): Applied those calculated values to both the training and test datasets. This prevents Data Leakage, ensuring the model doesn't "see" information from the future during training.
+### TRANSFORM LOGIC ###
+
+`Login aggression`
+Aims to show the persistence in logins for each user 
+
+
+`ATO score`   
+This is the Account takeover. This refers to the likelihood of someone else taking over the account throuhg hacking. It is caluclated as : 
+
+$$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age}} \quad \text{(Velocity Metric)}$$
+
+- This helps calculate how often an account has logins with its associated risk given its age. We expcet fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score.
+- This is referred to as our velocty metric.
 
 Encoding: Implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
 
