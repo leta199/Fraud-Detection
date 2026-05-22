@@ -4,10 +4,10 @@ A classic problem in financial environments. We will take a look at classifying 
 The dataset is obtained from Kaggle here: [Digital Payment Fraud Detecton](https://www.kaggle.com/datasets/jayjoshi37/digital-payment-fraud-detection/data)
 This project will go over using scikit-learn in binary classification  for this dataset and we will cover:   
 
-1. Exploratory Data Analysis and Data mining 
-2. Data pre - processing and cleaning 
-2. Modelling and evaluation 
-3. Evaluation and testing 
+1. Data pre - processing and cleaning 
+2. Exploratory Data Analysis and Data mining 
+3. Modelling and evaluation 
+4. Evaluation and testing 
  
 ## HOW IT'S MADE 
 Languages used: Python (version 3.14.3),  R  (version 4.5.2)     
@@ -22,8 +22,9 @@ Environment: VSCode, RStudio
 ## METHODS AND TECHNIQUES  
 
 **DATA PRE-PROCESSING AND CLEANING**   
-Mimicked a real life data science workflow by separating the dataset into train and test sets before any EDA to mimic new transactions.   
-Separated our predictor variables and response variable into x and y respectively. 
+We mimicked a real life data science workflow by separating the dataset into train and test sets before any EDA to mimic new transactions.   
+We separated our predictor variables and response variable into x and y respectively.   
+We created a 70/30  train/test split while stratifying across y to ensure we had an equal ditribution of fraud and not fraud in the train data compared to the test data. 
 
 ### EXPLORATORY DATA ANALYSIS AND DATA MINING ###    
 
