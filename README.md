@@ -21,7 +21,7 @@ Environment: VSCode, RStudio
 
 ## METHODS AND TECHNIQUES  
 
-**DATA PRE-PROCESSING AND CLEANING**   
+### DATA PRE-PROCESSING AND CLEANING ###   
 We mimicked a real life data science workflow by separating the dataset into train and test sets before any EDA to mimic new transactions.   
 We separated our predictor variables and response variable into x and y respectively.   
 We created a 70/30  train/test split while stratifying across y to ensure we had an equal ditribution of fraud and not fraud in the train data compared to the test data. 
