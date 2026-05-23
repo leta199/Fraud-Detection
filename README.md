@@ -95,17 +95,30 @@ This allows us to consider how unusual the transaction amount is for the group t
 #### ETL Categorical ####     
 
 `Location rarity`  and `Global rarity`
-Is a score that we define based on historical data for each user (users in  the test set) on how common (or uncommon) transactions from the 5 locations are.   
+Is a score that we define based on historical data for each user (users in  the test set) on how common (or uncommon) transactions from the 5 locations are.     
+This metric has two main interpretations: 
+- higher score means rarer location
+- lower score means more common location
+
 We calculate this rarity metric as:   
 
 $$\text{location rarity} = 1 - \frac{\text{number of locations transactions} + \alpha}{\text{total number of transactions } + \alpha \cdot K}$$
 
+- $\text{number of location transactions}$ - number of transcations for each user in 1 of the 5 locations.
+- $\alpha$ - smoothing parameter to prevent null entries
+- $\text{total number of transactions}$ - total number of transcations performed by user in train set  
+- $K$ - number of locations in the data
+  
 In addition to the user specific rarity we also have global rarities that will be applied to new users that do not appear in the training set.  
-This rarity is called `Global rarity` and is caluated like:
 
 $$\text{total rarity} = 1 - \frac{\text{total number of transcations in location} + \alpha}{\text{total number of transactions} + \alpha \cdot K}$$
 
-Subtrating the 1 from each calucation givies a higher score to rarer locations, and a lower score to frequent locations. 
+- $\text{total number of transcations in location}$ - total number of transcations for every user in 1 of the 5 locations in the train set
+- $\alpha$ - smoothing parameter to prevent null entries
+- - $\text{total number of transactions}$ - total number of transcations performed by all users in train set  
+- $K$ - number of locations in the data
+
+Once we applied this method to the categorical features of location we then extended the rationale to other categorical fetaures such as: payment mode, device type and transaction type.
 
 
 ### TRANSFORM LOGIC ###  
