@@ -78,7 +78,7 @@ This is what allows us to create features based on "historical" user data ( data
 #### ETL Numeric ####   
 Involved calculating numeric interactions such as:  
 
-`Z-scores` 
+`Z-scores`   
 We aim to calculate z scores from each transaction amount. In order to do this we assume that transcations amounts follow a Guassian distribution. Using the transaction amount and avg transcation amount fields we calculate z scoes with the following methodology:
 We will create a weighted standard devation score made up of two parts: user standard devation and group standard deviation. 
 
@@ -92,9 +92,12 @@ $$Z-score = \frac{\text{Transaction Amount} - \text{Avg Transaction Amount}}{\si
 
 This allows us to consider how unusual the transaction amount is for the group the user belongs to and for the user based on historical transaction in the train set. 
 
-### ETL_categorical #### 
+### ETL_categorical ####     
 
-involved calculating the rarities of categorical features based on each user's historical transaction data. 
+`Location rarity`  
+Is a score that we define based on historical data for each user (users in  the test set) on how common (or uncommon) transactions from the 5 locations are.   
+We calculate this rarity metric as:
+$$1 - \frac{\text{col\_array} + \alpha}{\text{total\_per\_user} + \alpha \cdot K}$$
 
 ### TRANSFORM LOGIC ###
 
