@@ -75,7 +75,7 @@ For the custom ETL pipeline I created a dedicated class to store the transformat
 ### FIT LOGIC ###
 This is what allows us to create features based on "historical" user data ( data from the train set) that we can use to determine if transactions from tne test set are suspicious.
 
-### ETL Numeric ###   
+#### ETL Numeric ####   
 Involved calculating numeric interactions such as:  
 
 `Z-scores` 
@@ -92,7 +92,9 @@ $$Z-score = \frac{\text{Transaction Amount} - \text{Avg Transaction Amount}}{\si
 
 This allows us to consider how unusual the transaction amount is for the group the user belongs to and for the user based on historical transaction in the train set. 
 
-`ETL_categorical` - involved calculating the rarities of categorical features based on each user's historical transaction data. 
+### ETL_categorical #### 
+
+involved calculating the rarities of categorical features based on each user's historical transaction data. 
 
 ### TRANSFORM LOGIC ###
 
