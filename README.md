@@ -94,7 +94,8 @@ This allows us to consider how unusual the transaction amount is for the group t
 
 #### ETL Categorical ####     
 
-`Location rarity`  and `Global rarity`
+`Location rarity`  and `Global rarity`  
+
 Is a score that we define based on historical data for each user (users in  the test set) on how common (or uncommon) transactions from the 5 locations are.     
 This metric has two main interpretations: 
 - higher score means rarer location
@@ -118,7 +119,10 @@ $$\text{total rarity} = 1 - \frac{\text{total number of transcations in location
 - - $\text{total number of transactions}$ - total number of transcations performed by all users in train set  
 - $K$ - number of locations in the data
 
-Once we applied this method to the categorical features of location we then extended the rationale to other categorical fetaures such as: payment mode, device type and transaction type.
+Once we applied this method to the categorical features of location we then extended the rationale to other categorical fetaures such as: payment mode, device type and transaction type.  
+After we run of fit duntion we creat a dictionary of specific user inofrmstion and global information which consists of:
+1. How common each location is for each user
+2. How common each categorical values is for each user such as "how often does User ID 123 use mobile phones in the past
 
 
 ### TRANSFORM LOGIC ###  
