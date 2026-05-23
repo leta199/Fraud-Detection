@@ -92,18 +92,21 @@ $$Z-score = \frac{\text{Transaction Amount} - \text{Avg Transaction Amount}}{\si
 
 This allows us to consider how unusual the transaction amount is for the group the user belongs to and for the user based on historical transaction in the train set. 
 
-### ETL_categorical ####     
+#### ETL Categorical ####     
 
 `Location rarity`  and `Global rarity`
 Is a score that we define based on historical data for each user (users in  the test set) on how common (or uncommon) transactions from the 5 locations are.   
-We calculate this rarity metric as:
+We calculate this rarity metric as:   
 
-$$1 - \frac{\text{col\_array} + \alpha}{\text{total\_per\_user} + \alpha \cdot K}$$  
+$$\text{location\_rarity} = 1 - \frac{\text{col\_array} + \alpha}{\text{total\_per\_user} + \alpha \cdot K}$$
 
-In addition to the user specific rarity we also have global rarities that will be applied to new users that do not appear in the tarining set.  
+In addition to the user specific rarity we also have global rarities that will be applied to new users that do not appear in the training set.  
 This rarity is called `Global rarity` and is caluated like:
 
 $$\text{total\_rarity} = 1 - \frac{\text{total\_in\_data} + \alpha}{\text{total\_across} + \alpha \cdot K}$$
+
+Subtrating the 1 from each calucation givies a higher score to rarer locations, and a lower score to frequent locations. 
+
 
 ### TRANSFORM LOGIC ###  
 Once we have information about the history of each user 
