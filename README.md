@@ -150,7 +150,7 @@ Tells us the average risk score and login attempts per day in account age
 
 $$\text{ATO score} = \frac{\text{IP Risk Score} + \text{login attempts last 24h}}{\text{Account Age} + \text{ATO smooth}}$$
 
-- $\text{ATO smooth} - acts as our smoothing values to prevent division by 0.
+- $\text{ATO smooth}$ - acts as our smoothing values to prevent division by 0.
 
 `Failure rate`  
 Percentage of total login attempts that were failed.
@@ -164,7 +164,7 @@ The average amount of money associated with a failed transaction.
 
 $$\text{cost per failure} = \frac{\text{transaction amount}}{\text{previous failed attempts} + \text{cpf smooth}}$$
 
-- $\text{cpf smooth} - acts as our smoothing values to prevent division by 0.
+- $\text{cpf smooth}$ - acts as our smoothing values to prevent division by 0.
 
 `IP age pressure`  
 Ratio of IP score to account  age.   
@@ -172,7 +172,7 @@ Ratio of IP score to account  age.
 
 $$\text{ip age pressure} = \frac{\text{ip risk score}}{\text{account age days} + \text{ip age pressure smooth}}$$
 
-- $\text{ip age pressure smooth} - acts as our smoothing values to prevent division by 0.
+- $\text{ip age pressure smooth}$ - acts as our smoothing values to prevent division by 0.
 
 `Transaction amount average ratio`  
 The percentage of each users average transaction amount that any new transaction is.    
