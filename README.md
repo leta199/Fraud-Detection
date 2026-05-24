@@ -215,18 +215,20 @@ After experimenting with multiple pipelines \ using Logistic regression,our ETL 
 Overall, our pipeline seems to have a diffuclt time findign a string signla for fraud. Therefore we will investigate if the imbalanced neature of fraud may be the cause of our struggling model.
 
 
-`SMOTE-ENN`:   
+`SMOTE-ENN`   
 Courtesy of Geekforgeeks, there is a method we can use for highly unbalanced datasets called SMOTE.  
 This is a resampling technique that generates synthetic data for our minority non fraud class.   
 It interpolates between existing data to create  completely new data points.  
 It helps prevent overfitting and allows models to learn patterns that predict minority class. 
 
-We made sure to generate data points using `k-neighbors` = 2 i.e generate data points based on the two closest neighbos to ensure that fraud signal is not diluted by many data points.   
+We made sure to generate data points using `k-neighbors` = 2 i.e generate data points based on the two closest neighbos to ensure that fraud signal is not diluted by many non fraud data points.   
 We implemented `n_neighbors` = 1 to generate one new data points from these two neighbors.  
-Finally we then got followed the fit 
 
 `GridSearchCV` and `RandomizedSearchCV`
 After implementing SMOTE ENN, we aim to identify what parameters help us best detect fraud from the custom classes we created as well as from the SMOTE ENN procdure. We implemented Randomizsed search to idenitfy tehe best parameters of:
+- our smoothing parameters such as $\text{ATO smooth}$  
+- the `class weights` parameter in our Logitisc regression model
+- The number of classes to be used to calculate group based standard devation $\sigma_{group}$
 
 
 **Weird Distribution Analysis**   
