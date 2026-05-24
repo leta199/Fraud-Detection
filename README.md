@@ -200,9 +200,18 @@ After experimenting with multiple pipelines \ using Logistic regression,our ETL 
 | Precision | 6.83% |
 | Recall | 62.58% |
 
+<img width="549" height="178" alt="Image" src="https://github.com/user-attachments/assets/6eda1535-197a-4344-86ee-30a1ecada6e1" />
+
+**Insights**
 1. We can see that the balanced accuracy is close to 50% indicating that the model is not much better than random guessing.
 2. We are able to detect a majority of fraud cases
 3. We have many false postiives in an effort to get a high recall so we have a very low precision.
+4. Our engineered features from failed login aggression and ATO score proved to provide the highest strength signal while others like z score provide little predictive power. 
+   - as the failed login aggression increases by 1 failed login on per day , that decreases the chances of fraud by 0.74% on average holding other variables constant.
+   - as the  login aggression increases by 1 login per day, that  increases the chances of fraud by 0.4% on average holding other variables constant.
+   - as the  ATO score increases by 1 per day, that increases the chances of fraud by 0.34% on average holding other variables constant.
+   - as the  failure rate by 1 previous failed attempts, that increases the chances of fraud by 0.4%.
+   
 Overall, our pipeline seems to have a diffuclt time findign a string signla for fraud. Therefore we will investigate if the imbalanced neature of fraud may be the cause of our struggling model.
 
 
