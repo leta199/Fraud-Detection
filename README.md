@@ -74,7 +74,8 @@ These classes were called `ETL_numeric` and `ETL_categorical`.
 For the custom ETL pipeline I created a dedicated class to store the transformation logic. This ensured that any cleaning applied to the training data—such as handling missing values or renaming columns was identically applied to the test data.
 
 ### FIT LOGIC ###
-This is what allows us to create features based on "historical" user data ( data from the train set) that we can use to determine if transactions from tne test set are suspicious.
+This is what allows us to create features based on "historical" user data (data from the train set) that we can use to determine if transactions from tne test set are suspicious.  
+It is implimented using the `.fit()` function on the train set and makes a profile for each user from the train set that we can use to compare to the test data (simluated incoming transcations) to see if whether or not they are fraud. 
 
 #### ETL Numeric ####   
 Involved calculating numeric interactions such as:  
@@ -127,7 +128,7 @@ After we run of fit duntion we creat a dictionary of specific user inofrmstion a
 
 
 ### TRANSFORM LOGIC ###  
-Once we have information about the history of each user in regards to categorical features we can now apply 
+Once we have information about the history of each user in regards to categorical features we can now apply tranformations on the 
 
 `Login aggression`
 Aims to show the persistence in logins for each user 
