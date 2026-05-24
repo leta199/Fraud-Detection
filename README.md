@@ -126,21 +126,59 @@ After we run of fit duntion we creat a dictionary of specific user inofrmstion a
 1. How common each location is for each user
 2. How common each categorical values is for each user such as "how often does User ID 123 use mobile phones in the past
 
-
 ### TRANSFORM LOGIC ###  
-Once we have information about the history of each user in regards to categorical features we can now apply tranformations on the 
+Once we have information about the history of each user in regards to categorical features we can now apply transformations on the test set to make predictions.   
+We engineeer a few more features that can help augment the calssification problem for each user. These features include: 
 
-`Login aggression`
-Aims to show the persistence in logins for each user 
+`Login aggression`    
+Tells us  the avrage number of logins per day in account age which correpsonds tp how aggressive any particular user is being in trying to log into their account.   
+- Newer accounts as well as hacked accounts are likely to have a larger number of login attempts.
 
+$$\text{login aggression} = \frac{\text{login attempts last 24h}}{\text{account age days} + \text{aggr smooth}}$$ 
+- $\text{aggr smooth}$ - a smootihg factor that can account for newe accounts with an age of 0 so we do not divide by 0.
+
+`Failed login aggression`  
+Tells us average number of failed login attempts per day. 
+- A higher rate of error is likely to correlate with fraudulent cases. 
+
+$$\text{failed login aggression} = \frac{\text{previous failed attempts}}{\text{account age days} + \text{failed aggr smooth}}$$
+- $\text{failed aggr smooth}$ - a smootihg factor that can account for newe accounts with an age of 0 so we do not divide by 0.
 
 `ATO score`   
-This is the Account takeover. This refers to the likelihood of someone else taking over the account throuhg hacking. It is caluclated as : 
+Tells us the average risk score and login attempts per day in account age
+- We expect fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score. This is referred to as our velocty metric.
 
-$$\frac{\text{IP Risk Score} + \text{Login Attempts}}{\text{Account Age}} \quad \text{(Velocity Metric)}$$
+$$\text{ATO score} = \frac{\text{IP Risk Score} + \text{login attempts last 24h}}{\text{Account Age} + \text{ATO smooth}}$$
 
-- This helps calculate how often an account has logins with its associated risk given its age. We expcet fraudulent new accounts to have a high number of logins in a short amount of time which will lead to a low ATO score.
-- This is referred to as our velocty metric.
+- $\text{ATO smooth} - acts as our smoothing values to prevent division by 0.
+
+`Failure rate`
+Percentage of total login attempts that were failed.
+- We expect that accounts that have fraudsters in them have a high failure rate 
+
+$$\text{failure rate} = \frac{\text{previous failed attempts}}{\text{login attempts last 24h}}$$
+
+`Cost per failure`  
+The average amount of money associated with a failed transaction.   
+- A higher value indicates that a certain accounts has large amounts of money being moved around per fialure that could indicate fraudlent activity. 
+
+$$\text{cost per failure} = \frac{\text{transaction amount}}{\text{previous failed attempts} + \text{cpf smooth}}$$
+
+- $\text{cpf smooth} - acts as our smoothing values to prevent division by 0.
+
+`IP age pressure`
+Ratio of IP score to account  age.   
+- A new high value corresponds to a high risky new account that may indicate fraud.
+
+$$\text{ip age pressure} = \frac{\text{ip risk score}}{\text{account age days} + \text{ip age pressure smooth}}$$
+
+- $\text{ip age pressure smooth} - acts as our smoothing values to prevent division by 0.
+
+`Transaction amount average ratio`
+The percentage of each users average transaction amount that any new transaction is.    
+- The higher this ratio the greater suspicion of fraud in that transaction. 
+
+$$\text{trans amount average ratio} = \frac{\text{transaction amount}}{\text{avg transaction amount}}$$
 
 Encoding: Implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
 
