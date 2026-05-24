@@ -64,7 +64,7 @@ Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations
 
 ### MODELLING, EVALUATION AND TESTING ### 
 
-**FEATURE ENGINEERING & ETL**
+#### FEATURE ENGINEERING & ETL ####
 
 To handle the data cleaning and preparation, I developed two ETL systems using custom Python classes that created an automated method of handling both numerical and categorical variables.    
 This incororated the use of `BaseEstimator` and `TranformerMixin` as agruments to implement these classes into scikit-learn pipelines. 
@@ -180,6 +180,8 @@ The percentage of each users average transaction amount that any new transaction
 
 $$\text{trans amount average ratio} = \frac{\text{transaction amount}}{\text{avg transaction amount}}$$
 
+
+#### PIPELINE ####
 Encoding: Implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
 
 `Pipeline` - Combined custom transformers into a streamlined  automation to ensure all pre-processing steps are applied atomically during both training and inference.   
