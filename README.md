@@ -180,14 +180,31 @@ The percentage of each users average transaction amount that any new transaction
 
 $$\text{trans amount average ratio} = \frac{\text{transaction amount}}{\text{avg transaction amount}}$$
 
+Finally we will scale the raw numerical values and apply dummy variables to categorical features.  
+We implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
 
 #### PIPELINE ####
-Encoding: Implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
+Once we finish engineering the above features, we not need to automate the modelling process to apply the fir and trasnform methods we designed.   
+This will be done using `imblearn` library and the SMOTE ENN procedure. 
 
-`Pipeline` - Combined custom transformers into a streamlined  automation to ensure all pre-processing steps are applied atomically during both training and inference.   
+`Pipeline`  
+Combined custom transformers into a streamlined  automation to ensure all pre-processing steps are applied atomically during both training and inference.   
 This architecture prevents data leakage by encapsulating the fit() and transform() logic within a single executable object.
 
-With the features engineered, I utilized advanced resampling and optimization techniques to handle the imbalanced nature of fraud.
+**PipeLine #5**   
+After experimenting with multiple pipelines with our ETL categorical and numeric classes, the best pipeline that detetcted the most fraud was #5.
+
+| Logistic regression | Metric |
+| :--- | :---: |
+| Balanced accuracy | 51.45% |
+| Precision | 6.83% |
+| Recall | 62.58% |
+
+1. We can see that the balanced accuracy is close to 50% indicating that the model is not much better than random guessing.
+2. We are able to detect a majority of fraud cases
+3. We have many false postiives in an effort to get a high recall so we have a very low precision.
+Overall, our pipeline seems to have a diffuclt time findign a string signla for fraud. Therefore we will investigate if the imbalanced neature of fraud may be the cause of our struggling model.
+
 
 `SMOTE-ENN`:   
 Courtesy of Geekforgeeks, there is a method we can use for highly unbalanced datasets called SMOTE.  
@@ -195,10 +212,12 @@ This is a resampling technique that generates synthetic data for our minority no
 It interpolates between existing data to create  completely new data points.  
 It helps prevent overfitting and allows models to learn patterns that predict minority class. 
 
-I then generated synthetic fraud cases to balance the classes.    
-As the data was diffcult to get a signal from ENN allowed elimination of neighbours that were to similar to non fraud categories. 
+We made sure to generate data points using `k-neighbors` = 2 i.e generate data points based on the two closest neighbos to ensure that fraud signal is not diluted by many data points.   
+We implemented `n_neighbors` = 1 to generate one new data points from these two neighbors.  
+Finally we then got followed the fit 
 
-`GridSearchCV`: Automated the search for optimal hyperparameters (e.g., max_depth, n_estimators) for Logistic regression mode using 50 iterations of RandomizedSerachCV.
+`GridSearchCV` and `RandomizedSearchCV`
+
 
 **Weird Distribution Analysis**   
 `Q-Q Plot`    
