@@ -152,13 +152,13 @@ $$\text{ATO score} = \frac{\text{IP Risk Score} + \text{login attempts last 24h}
 
 - $\text{ATO smooth} - acts as our smoothing values to prevent division by 0.
 
-`Failure rate`
+`Failure rate`  
 Percentage of total login attempts that were failed.
 - We expect that accounts that have fraudsters in them have a high failure rate 
 
 $$\text{failure rate} = \frac{\text{previous failed attempts}}{\text{login attempts last 24h}}$$
 
-`Cost per failure`  
+`Cost per failure`    
 The average amount of money associated with a failed transaction.   
 - A higher value indicates that a certain accounts has large amounts of money being moved around per fialure that could indicate fraudlent activity. 
 
@@ -166,7 +166,7 @@ $$\text{cost per failure} = \frac{\text{transaction amount}}{\text{previous fail
 
 - $\text{cpf smooth} - acts as our smoothing values to prevent division by 0.
 
-`IP age pressure`
+`IP age pressure`  
 Ratio of IP score to account  age.   
 - A new high value corresponds to a high risky new account that may indicate fraud.
 
@@ -174,7 +174,7 @@ $$\text{ip age pressure} = \frac{\text{ip risk score}}{\text{account age days} +
 
 - $\text{ip age pressure smooth} - acts as our smoothing values to prevent division by 0.
 
-`Transaction amount average ratio`
+`Transaction amount average ratio`  
 The percentage of each users average transaction amount that any new transaction is.    
 - The higher this ratio the greater suspicion of fraud in that transaction. 
 
