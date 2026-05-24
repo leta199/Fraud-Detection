@@ -229,7 +229,8 @@ After implementing SMOTE ENN, we aim to identify what parameters help us best de
 - our smoothing parameters such as $\text{ATO smooth}$  
 - the `class weights` parameter in our Logitisc regression model
 - The number of classes to be used to calculate group based standard devation $\sigma_{group}$
-
+We found the best paramaters to then be:
+<img width="337" height="211" alt="Image" src="https://github.com/user-attachments/assets/3f0c2897-e910-48dc-b406-e3a381571334" />
 
 **Weird Distribution Analysis**   
 `Q-Q Plot`    
