@@ -183,7 +183,7 @@ $$\text{trans amount average ratio} = \frac{\text{transaction amount}}{\text{avg
 Finally we will scale the raw numerical values and apply dummy variables to categorical features.  
 We implemented `OneHotEncoder` and `StandardScaler` using  ColumnTransformer to handle categorical and numerical features in a single pass.
 
-#### PIPELINE ####
+#### PIPELINES ####
 Once we finish engineering the above features, we not need to automate the modelling process to apply the fir and trasnform methods we designed.   
 This will be done using `imblearn` library and the SMOTE ENN procedure. 
 
