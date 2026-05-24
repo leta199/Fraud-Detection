@@ -103,7 +103,7 @@ This metric has two main interpretations:
 
 We calculate this rarity metric as:   
 
-$$\text{location rarity} = 1 - \frac{\text{number of locations transactions} + \alpha}{\text{total number of transactions } + \alpha \cdot K}$$
+$$\text{user location rarity} = 1 - \frac{\text{number of locations transactions} + \alpha}{\text{total number of transactions } + \alpha \cdot K}$$
 
 - $\text{number of location transactions}$ - number of transcations for each user in 1 of the 5 locations.
 - $\alpha$ - smoothing parameter to prevent null entries
@@ -112,11 +112,11 @@ $$\text{location rarity} = 1 - \frac{\text{number of locations transactions} + \
   
 In addition to the user specific rarity we also have global rarities that will be applied to new users that do not appear in the training set.  
 
-$$\text{total rarity} = 1 - \frac{\text{total number of transcations in location} + \alpha}{\text{total number of transactions} + \alpha \cdot K}$$
+$$\text{global rarity} = 1 - \frac{\text{total number of transcations in location} + \alpha}{\text{total number of transactions} + \alpha \cdot K}$$
 
 - $\text{total number of transcations in location}$ - total number of transcations for every user in 1 of the 5 locations in the train set
 - $\alpha$ - smoothing parameter to prevent null entries
-- - $\text{total number of transactions}$ - total number of transcations performed by all users in train set  
+- $\text{total number of transactions}$ - total number of transcations performed by all users in train set  
 - $K$ - number of locations in the data
 
 Once we applied this method to the categorical features of location we then extended the rationale to other categorical fetaures such as: payment mode, device type and transaction type.  
