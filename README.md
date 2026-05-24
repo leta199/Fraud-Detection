@@ -7,7 +7,7 @@ This project will go over using scikit-learn in binary classification  for this 
 1. Data pre - processing and cleaning 
 2. Exploratory Data Analysis and Data mining 
 3. Modelling and evaluation 
-4. Evaluation and testing 
+4. FINAL INSIGHTS  
  
 ## HOW IT'S MADE 
 Languages used: Python (version 3.14.3),  R  (version 4.5.2)     
@@ -229,13 +229,21 @@ After implementing SMOTE ENN, we aim to identify what parameters help us best de
 - our smoothing parameters such as $\text{ATO smooth}$  
 - the `class weights` parameter in our Logitisc regression model
 - The number of classes to be used to calculate group based standard devation $\sigma_{group}$
-We found the best paramaters to then be:
+- We found the best paramaters to then be:
+
 <img width="337" height="211" alt="Image" src="https://github.com/user-attachments/assets/3f0c2897-e910-48dc-b406-e3a381571334" />
 
-**Weird Distribution Analysis**   
+**Final Pipeline** 
+After implementing the SMOTE ENN, Randomized search parameters, and our ETL classes we ran our the train and test sets through the resultant pipeline and we found the following:  
+<img width="273" height="112" alt="Image" src="https://github.com/user-attachments/assets/7816cc82-3b37-47c3-a135-0b4d057548ed" />
+
+We can see that even after implementing these procedures we have not been able to find much of a signal for fraud.   
+We can go back to the EDA stage and conduct further analysis to identfiy if we may have lost any details or missed key interactions that will point us in the right direction. 
+
+**Additional Exploratory Data Analysis**   
 `Q-Q Plot`    
 
-compared the transaction amounts against a theoretical normal distribution.
+We compared the transaction amounts against a theoretical normal distribution.
 The result was a perfectly linear relationship, indicating the data follows a Uniform Distribution U(a,b).  
 - The gradient of the values plotted is greater than our y = x trend line whihch means that the varaince of the sample data is greater than for a standrd nomral equation. 
 <img width="1728" height="1085" alt="Image" src="https://github.com/user-attachments/assets/48bdb731-a206-45ce-970c-8cecc9ab6df9" />
@@ -249,6 +257,10 @@ In real-world finance, transaction amounts are typically right skewed (transacti
  Revealed what features may have been most important but all the features were very minimally correlated with each other 
 - This suggested that the features may have been generated independently and stitched with fraud labels applied randomly.
 <img width="1025" height="1085" alt="Image" src="https://github.com/user-attachments/assets/1818727d-e772-4e72-9b3f-bc2a08b14630" />
+
+Therefore uponf uther inspectionm this seems to have been an issue with the data not necessarily with out modelling methods. 
+To be sure I went to check other submissions in the competition and see hwo other people were able to notice the fraud pattern.   
+Everyone also seemed to struggle to find a pattern with the maximum recall I found being 52% but precision, AUC and balanced accuracy indicated that all the models where not much better than random guessing. 
 
 ## FINAL INSIGHTS
 
