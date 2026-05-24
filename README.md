@@ -194,7 +194,7 @@ This architecture prevents data leakage by encapsulating the fit() and transform
 **PipeLine #5**   
 After experimenting with multiple pipelines \ using Logistic regression,our ETL categorical and numeric classes, the best pipeline that detetcted the most fraud was #5.
 
-| Logistic regression | Metric |
+| Pipeline 5| Metric |
 | :--- | :---: |
 | Balanced accuracy | 51.45% |
 | Precision | 6.83% |
@@ -233,9 +233,14 @@ After implementing SMOTE ENN, we aim to identify what parameters help us best de
 
 <img width="337" height="211" alt="Image" src="https://github.com/user-attachments/assets/3f0c2897-e910-48dc-b406-e3a381571334" />
 
-**Final Pipeline** 
+**Final Pipeline**   
 After implementing the SMOTE ENN, Randomized search parameters, and our ETL classes we ran our the train and test sets through the resultant pipeline and we found the following:  
-<img width="273" height="112" alt="Image" src="https://github.com/user-attachments/assets/7816cc82-3b37-47c3-a135-0b4d057548ed" />
+
+| Final Pipeline | Metric |
+| :--- | :---: |
+| Balanced accuracy | 50.92% |
+| Precision | 6.79% |
+| Recall | 45.58% |
 
 We can see that even after implementing these procedures we have not been able to find much of a signal for fraud.   
 We can go back to the EDA stage and conduct further analysis to identfiy if we may have lost any details or missed key interactions that will point us in the right direction. 
@@ -264,7 +269,11 @@ Everyone also seemed to struggle to find a pattern with the maximum recall I fou
 
 ## FINAL INSIGHTS
 
-<img width="273" height="112" alt="Image" src="https://github.com/user-attachments/assets/7816cc82-3b37-47c3-a135-0b4d057548ed" />
+| Final Pipeline | Metric |
+| :--- | :---: |
+| Balanced accuracy | 50.92% |
+| Precision | 6.79% |
+| Recall | 45.58% |
 
 Despite the modular ETL classes and optimized pipelines, the model performance confirmed the findings of the R-based audit.
 
