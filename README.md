@@ -66,7 +66,8 @@ Hyderabad and Mumbai have a higher prevalence of fraud than other dice locations
 
 **FEATURE ENGINEERING & ETL**
 
-To handle the data cleaning and preparation, I developed two ETL systems using custom Python classes that created an automated method of handling both numerical and categorical variables.   
+To handle the data cleaning and preparation, I developed two ETL systems using custom Python classes that created an automated method of handling both numerical and categorical variables.    
+This incororated the use of `BaseEstimator` and `TranformerMixin` as agruments to implement these classes into scikit-learn pipelines. 
 This allowed for reproducible `fit` and `transform` operations across training and testing sets.  
 These classes were called `ETL_numeric` and `ETL_categorical`.  
 
@@ -126,7 +127,7 @@ After we run of fit duntion we creat a dictionary of specific user inofrmstion a
 
 
 ### TRANSFORM LOGIC ###  
-Once we have information about the history of each user 
+Once we have information about the history of each user in regards to categorical features we can now apply 
 
 `Login aggression`
 Aims to show the persistence in logins for each user 
