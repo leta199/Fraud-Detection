@@ -192,7 +192,7 @@ Combined custom transformers into a streamlined  automation to ensure all pre-pr
 This architecture prevents data leakage by encapsulating the fit() and transform() logic within a single executable object.
 
 **PipeLine #5**   
-After experimenting with multiple pipelines with our ETL categorical and numeric classes, the best pipeline that detetcted the most fraud was #5.
+After experimenting with multiple pipelines \ using Logistic regression,our ETL categorical and numeric classes, the best pipeline that detetcted the most fraud was #5.
 
 | Logistic regression | Metric |
 | :--- | :---: |
@@ -217,6 +217,7 @@ We implemented `n_neighbors` = 1 to generate one new data points from these two 
 Finally we then got followed the fit 
 
 `GridSearchCV` and `RandomizedSearchCV`
+After implementing SMOTE ENN, we aim to identify what parameters help us best detect fraud from the custom classes we created as well as from the SMOTE ENN procdure. We implemented Randomizsed search to idenitfy tehe best parameters of:
 
 
 **Weird Distribution Analysis**   
