@@ -307,6 +307,8 @@ I would say this was a very good learning opportunity and I got to grow a lot fo
 It proved that while the engineering was sound, the high Bayes Error Rate of the dataset made predictive modeling a lost cause.  
 
 ## PROJECT STRUCTURE      
+|[Fraud-Detection](https://github.com/leta199/Fraud-Detection)    
+│    
 |[dataset](https://github.com/leta199/Fraud-Detection/tree/main/dataset)  
 |  ├──[test_data](https://github.com/leta199/Fraud-Detection/blob/main/dataset/test_data.csv)  
 │  ├──[train_data](https://github.com/leta199/Fraud-Detection/blob/main/dataset/train_data.csv)   
